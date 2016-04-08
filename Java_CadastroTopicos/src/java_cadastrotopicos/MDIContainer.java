@@ -18,6 +18,7 @@ public class MDIContainer extends javax.swing.JFrame {
      */
     public MDIContainer() {
         initComponents();
+        abreLogin();
     }
 
     /**
@@ -31,61 +32,52 @@ public class MDIContainer extends javax.swing.JFrame {
 
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
-        exitMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        cutMenuItem = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
-        contentMenuItem = new javax.swing.JMenuItem();
+        menuOpcoes = new javax.swing.JMenu();
+        menuOpcoesCadastro = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        menuOpcoesSair = new javax.swing.JMenuItem();
+        menuAjuda = new javax.swing.JMenu();
+        menuAjudaSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        fileMenu.setMnemonic('f');
-        fileMenu.setText("File");
-
-        openMenuItem.setMnemonic('o');
-        openMenuItem.setText("Open");
-        openMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                openMenuItemActionPerformed(evt);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
-        fileMenu.add(openMenuItem);
 
-        exitMenuItem.setMnemonic('x');
-        exitMenuItem.setText("Exit");
-        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        menuOpcoes.setText("Opções");
+
+        menuOpcoesCadastro.setText("Cadastro");
+        menuOpcoesCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitMenuItemActionPerformed(evt);
+                menuOpcoesCadastroActionPerformed(evt);
             }
         });
-        fileMenu.add(exitMenuItem);
+        menuOpcoes.add(menuOpcoesCadastro);
+        menuOpcoes.add(jSeparator1);
 
-        menuBar.add(fileMenu);
-
-        editMenu.setMnemonic('e');
-        editMenu.setText("Edit");
-
-        cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("Cut");
-        editMenu.add(cutMenuItem);
-
-        menuBar.add(editMenu);
-
-        helpMenu.setMnemonic('h');
-        helpMenu.setText("Ajuda");
-
-        contentMenuItem.setMnemonic('c');
-        contentMenuItem.setText("Sobre");
-        contentMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        menuOpcoesSair.setText("Sair");
+        menuOpcoesSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contentMenuItemActionPerformed(evt);
+                menuOpcoesSairActionPerformed(evt);
             }
         });
-        helpMenu.add(contentMenuItem);
+        menuOpcoes.add(menuOpcoesSair);
 
-        menuBar.add(helpMenu);
+        menuBar.add(menuOpcoes);
+
+        menuAjuda.setText("Ajuda");
+
+        menuAjudaSobre.setText("Sobre");
+        menuAjudaSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAjudaSobreActionPerformed(evt);
+            }
+        });
+        menuAjuda.add(menuAjudaSobre);
+
+        menuBar.add(menuAjuda);
 
         setJMenuBar(menuBar);
 
@@ -103,19 +95,25 @@ public class MDIContainer extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
+    private void menuAjudaSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAjudaSobreActionPerformed
+        JInternalFrame internalSobre = new InternalFrameSobre();
+        desktopPane.add(internalSobre);
+        internalSobre.setVisible(true);
+    }//GEN-LAST:event_menuAjudaSobreActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+    }//GEN-LAST:event_formWindowOpened
+
+    private void menuOpcoesCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOpcoesCadastroActionPerformed
+        JInternalFrame internalCadastro = new InternalFrameCadastro();
+        desktopPane.add(internalCadastro);
+        internalCadastro.setVisible(true);
+    }//GEN-LAST:event_menuOpcoesCadastroActionPerformed
+
+    private void menuOpcoesSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOpcoesSairActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_exitMenuItemActionPerformed
-
-    private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_openMenuItemActionPerformed
-
-    private void contentMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contentMenuItemActionPerformed
-        JInternalFrame filha1 = new InternalFrameSobre();
-        desktopPane.add(filha1);
-        filha1.setVisible(true);
-    }//GEN-LAST:event_contentMenuItemActionPerformed
+    }//GEN-LAST:event_menuOpcoesSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,7 +127,7 @@ public class MDIContainer extends javax.swing.JFrame {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");                
                     break;
                 }
             }
@@ -148,22 +146,26 @@ public class MDIContainer extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MDIContainer().setVisible(true);
-                
+                new MDIContainer().setVisible(true);            
             }
         });
     }
+    
+    public void abreLogin() {
+        JInternalFrame internalLogin = new InternalFrameLogin();
+        desktopPane.add(internalLogin);
+        internalLogin.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem contentMenuItem;
-    private javax.swing.JMenuItem cutMenuItem;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu editMenu;
-    private javax.swing.JMenuItem exitMenuItem;
-    private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu helpMenu;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JMenu menuAjuda;
+    private javax.swing.JMenuItem menuAjudaSobre;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem openMenuItem;
+    private javax.swing.JMenu menuOpcoes;
+    private javax.swing.JMenuItem menuOpcoesCadastro;
+    private javax.swing.JMenuItem menuOpcoesSair;
     // End of variables declaration//GEN-END:variables
 
 }
