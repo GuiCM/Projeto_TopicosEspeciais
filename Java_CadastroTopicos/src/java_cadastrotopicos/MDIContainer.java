@@ -18,7 +18,6 @@ public class MDIContainer extends javax.swing.JFrame {
      */
     public MDIContainer() {
         initComponents();
-        abreLogin();
     }
 
     /**
@@ -40,6 +39,7 @@ public class MDIContainer extends javax.swing.JFrame {
         menuAjudaSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(0, 0));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -149,12 +149,6 @@ public class MDIContainer extends javax.swing.JFrame {
                 new MDIContainer().setVisible(true);            
             }
         });
-    }
-    
-    public void abreLogin() {
-        JInternalFrame internalLogin = new InternalFrameLogin();
-        desktopPane.add(internalLogin);
-        internalLogin.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
