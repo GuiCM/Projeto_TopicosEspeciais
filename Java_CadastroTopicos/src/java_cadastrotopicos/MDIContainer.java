@@ -5,6 +5,8 @@
  */
 package java_cadastrotopicos;
 
+import java_cadastrotopicos.Sobre.InternalFrameSobre;
+import java_cadastrotopicos.Imoveis.InternalFrameCadastroImovel;
 import javax.swing.JInternalFrame;
 
 /**
@@ -40,11 +42,15 @@ public class MDIContainer extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(0, 0));
+        setName("MainWindow"); // NOI18N
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
+
+        desktopPane.setBackground(new java.awt.Color(204, 204, 204));
 
         menuOpcoes.setText("Opções");
 
@@ -102,11 +108,11 @@ public class MDIContainer extends javax.swing.JFrame {
     }//GEN-LAST:event_menuAjudaSobreActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
+        this.setLocationRelativeTo(null);
     }//GEN-LAST:event_formWindowOpened
 
     private void menuOpcoesCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOpcoesCadastroActionPerformed
-        JInternalFrame internalCadastro = new InternalFrameCadastro();
+        JInternalFrame internalCadastro = new InternalFrameCadastroImovel();
         desktopPane.add(internalCadastro);
         internalCadastro.setVisible(true);
     }//GEN-LAST:event_menuOpcoesCadastroActionPerformed
@@ -127,7 +133,7 @@ public class MDIContainer extends javax.swing.JFrame {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");                
+                    javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
                     break;
                 }
             }
@@ -146,7 +152,7 @@ public class MDIContainer extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MDIContainer().setVisible(true);            
+                new MDIContainer().setVisible(true);
             }
         });
     }

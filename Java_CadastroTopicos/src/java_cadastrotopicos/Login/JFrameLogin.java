@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package java_cadastrotopicos;
+package java_cadastrotopicos.Login;
 
 /**
  *
@@ -36,13 +36,19 @@ public class JFrameLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login do Sistema");
+        setLocation(new java.awt.Point(0, 0));
         setName("frmLogin"); // NOI18N
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("Usuário:");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Senha:");
 
         txtUsuario.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
@@ -59,15 +65,15 @@ public class JFrameLogin extends javax.swing.JFrame {
             }
         });
 
-        btnEntrar.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        btnEntrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnEntrar.setText("Entrar");
         btnEntrar.addActionListener(listener);
 
-        btnSair.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        btnSair.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnSair.setText("Sair");
         btnSair.addActionListener(listener);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Entrar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -113,7 +119,7 @@ public class JFrameLogin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSair)
                     .addComponent(btnEntrar))
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
@@ -127,6 +133,11 @@ public class JFrameLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_pswSenhaActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setLocationRelativeTo(null);
+    }//GEN-LAST:event_formWindowOpened
+
+   
     /**
      * @param args the command line arguments
      */
@@ -139,7 +150,8 @@ public class JFrameLogin extends javax.swing.JFrame {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+                    
                     break;
                 }
             }
