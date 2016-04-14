@@ -6,8 +6,7 @@ import java_cadastrotopicos.MDIContainer;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class EventosLogin implements ActionListener {
-    
+public class EventosLogin implements ActionListener {   
     private final String mensagemSaida = "Você sairá de programa. Deseja realizar esta ação?";
     
     private JFrameLogin frame;
@@ -16,8 +15,9 @@ public class EventosLogin implements ActionListener {
         this.frame = frame;
     }
     
-    public void actionPerformed(ActionEvent ev) {
-        switch (ev.getActionCommand()) {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        switch (e.getActionCommand()) {
             case "Sair":
                 int result;
                 result = JOptionPane.showConfirmDialog(null, mensagemSaida, "Mensagem do Sistema", JOptionPane.YES_NO_OPTION);

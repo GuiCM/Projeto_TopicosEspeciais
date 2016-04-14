@@ -2,19 +2,20 @@ package java_cadastrotopicos.Imoveis;
 
 public class Imoveis {
 
-    private String tipoImovel;
-    private float dimensoes;
-    private float valor;
-    private String tipoMaterial;
+    private String  tipoImovel;
+    private float   dimensoes;
+    private float   valor;
+    private String  tipoMaterial;
 
-    private String rua;
-    private int numero;
-    private String cep;
-    private String cidade;
-    private String estado;
-    private String bairro;
+    private String  rua;
+    private int     numero;
+    private String  cep;
+    private String  cidade;
+    private String  estado;
+    private String  bairro;
     private boolean alugado;
 
+    /******* GET'S *******/
     public String getTipoImovel() {
         return this.tipoImovel;
     }
@@ -60,7 +61,7 @@ public class Imoveis {
     }
 
     
-    
+    /******* SET'S *******/
     public void setTipoImovel(String tipoImovel) {
         this.tipoImovel = tipoImovel;
     }
@@ -104,5 +105,4 @@ public class Imoveis {
     public void setAlugado(boolean alugado) {
         this.alugado = alugado;
     }
-
 }

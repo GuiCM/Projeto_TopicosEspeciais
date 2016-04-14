@@ -3,15 +3,15 @@ package java_cadastrotopicos.Imoveis;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class EventosCadastroImovel implements ActionListener{
- private InternalFrameCadastroImovel frame;
+public class EventosCadastroImovel implements ActionListener {
+    private InternalFrameCadastroImovel frame;
     
     public EventosCadastroImovel(InternalFrameCadastroImovel frame){
         this.frame = frame;
     }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
@@ -24,13 +24,10 @@ public class EventosCadastroImovel implements ActionListener{
                     frame.dispose();
                 else
                     frame.dispose();
-                break;
-                
-                 case "Salvar":
+                break;    
+            case "Salvar":
                 frame.dispose();
-                break;
-           
+                break;           
         }
     }
-    
 }
