@@ -42,14 +42,14 @@ public class InternalFrameCadastroCliente extends javax.swing.JInternalFrame {
         cmbSexo = new javax.swing.JComboBox<>();
         mskDataNascimento = new javax.swing.JFormattedTextField();
         mskCPF = new javax.swing.JFormattedTextField();
-        mskCPF1 = new javax.swing.JFormattedTextField();
+        mskRG = new javax.swing.JFormattedTextField();
 
         setClosable(true);
         setTitle("Adicionar");
         setMinimumSize(new java.awt.Dimension(795, 550));
         setPreferredSize(new java.awt.Dimension(795, 550));
 
-        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\guilh\\Tópicos imagens\\iconeCliente.png")); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconeCliente.png"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -160,7 +160,7 @@ public class InternalFrameCadastroCliente extends javax.swing.JInternalFrame {
 
         mskCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
 
-        mskCPF1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        mskRG.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -180,7 +180,7 @@ public class InternalFrameCadastroCliente extends javax.swing.JInternalFrame {
                     .addComponent(txtIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(mskCPF1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(mskRG, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(mskCPF, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(mskDataNascimento, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(cmbSexo, javax.swing.GroupLayout.Alignment.LEADING, 0, 154, Short.MAX_VALUE)))
@@ -211,7 +211,7 @@ public class InternalFrameCadastroCliente extends javax.swing.JInternalFrame {
                     .addComponent(mskCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(mskCPF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mskRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
@@ -285,8 +285,8 @@ public class InternalFrameCadastroCliente extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JFormattedTextField mskCPF;
-    private javax.swing.JFormattedTextField mskCPF1;
     private javax.swing.JFormattedTextField mskDataNascimento;
+    private javax.swing.JFormattedTextField mskRG;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCEP;
     private javax.swing.JTextField txtCidade;

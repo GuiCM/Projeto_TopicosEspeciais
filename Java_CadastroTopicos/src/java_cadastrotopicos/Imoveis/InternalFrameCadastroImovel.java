@@ -68,7 +68,7 @@ public class InternalFrameCadastroImovel extends javax.swing.JInternalFrame {
         setMinimumSize(new java.awt.Dimension(795, 550));
         setPreferredSize(new java.awt.Dimension(795, 550));
 
-        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\guilh\\Tópicos imagens\\iconeImovel.png")); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconeImovel.png"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);

@@ -1,6 +1,7 @@
 package java_cadastrotopicos;
 
 import Clientes.InternalFrameCadastroCliente;
+import Empreiteiras.InternalFrameCadastroEmpreiteiras;
 import java_cadastrotopicos.Sobre.InternalFrameSobre;
 import java_cadastrotopicos.Imoveis.InternalFrameCadastroImovel;
 import javax.swing.JInternalFrame;
@@ -62,6 +63,11 @@ public class MDIContainer extends javax.swing.JFrame {
 
         menuOpcoesCadastroEmpreiteiras.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
         menuOpcoesCadastroEmpreiteiras.setText("Cadastro de Empreiteiras");
+        menuOpcoesCadastroEmpreiteiras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuOpcoesCadastroEmpreiteirasActionPerformed(evt);
+            }
+        });
         menuOpcoes.add(menuOpcoesCadastroEmpreiteiras);
         menuOpcoes.add(jSeparator1);
 
@@ -130,6 +136,13 @@ public class MDIContainer extends javax.swing.JFrame {
         desktopPane.add(internalCadastroClientes);
         internalCadastroClientes.setVisible(true);
     }//GEN-LAST:event_menuOpcoesCadastroClientesActionPerformed
+
+    private void menuOpcoesCadastroEmpreiteirasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOpcoesCadastroEmpreiteirasActionPerformed
+        // TODO add your handling code here:
+        JInternalFrame internalCadastroEmpreiteiras = new InternalFrameCadastroEmpreiteiras();
+        desktopPane.add(internalCadastroEmpreiteiras);
+        internalCadastroEmpreiteiras.setVisible(true);
+    }//GEN-LAST:event_menuOpcoesCadastroEmpreiteirasActionPerformed
 
 
     public static void main(String args[]) {

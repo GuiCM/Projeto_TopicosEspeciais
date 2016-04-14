@@ -82,7 +82,7 @@
     <Component class="javax.swing.JLabel" name="jLabel13">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\guilh\T&#xf3;picos imagens\iconeCliente.png"/>
+          <Image iconType="3" name="/Imagens/iconeCliente.png"/>
         </Property>
       </Properties>
     </Component>
@@ -286,7 +286,7 @@
                       <Component id="txtIdade" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
                       <Component id="txtNome" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="mskCPF1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="mskRG" alignment="0" max="32767" attributes="0"/>
                           <Component id="mskCPF" alignment="0" max="32767" attributes="0"/>
                           <Component id="mskDataNascimento" alignment="0" max="32767" attributes="0"/>
                           <Component id="cmbSexo" alignment="0" pref="154" max="32767" attributes="0"/>
@@ -326,7 +326,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="mskCPF1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="mskRG" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="14" max="32767" attributes="0"/>
@@ -396,7 +396,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="mskCPF1">
+        <Component class="javax.swing.JFormattedTextField" name="mskRG">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
               <Format subtype="0" type="0"/>

@@ -11,12 +11,26 @@ package java_cadastrotopicos.Login;
  */
 public class JFrameLogin extends javax.swing.JFrame {
 
-    private EventosLogin listener = new EventosLogin(this);
-    
+   
+
     public JFrameLogin() {
         initComponents();
+     
     }
+    
+     private EventosLogin listener = new EventosLogin(this);
 
+    public String  getUsuario()
+    {    
+        return this.txtUsuario.getText();
+    }
+    
+     public String  getSenha()
+    {    
+        return this.txtUsuario.getText();
+    }
+    
+    //   private EventosLogin listener = new EventosLogin(this, "", "");
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -154,7 +168,6 @@ public class JFrameLogin extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }//GEN-LAST:event_formWindowOpened
 
-   
     /**
      * @param args the command line arguments
      */
@@ -168,7 +181,7 @@ public class JFrameLogin extends javax.swing.JFrame {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-                    
+
                     break;
                 }
             }
