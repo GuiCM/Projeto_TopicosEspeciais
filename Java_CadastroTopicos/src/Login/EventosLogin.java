@@ -1,4 +1,4 @@
-package java_cadastrotopicos.Login;
+package Login;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,8 +32,7 @@ public class EventosLogin implements ActionListener {
                 }
                 break;
 
-            case "Entrar":
-                
+            case "Entrar":                
                 this.usuario = frame.getUsuario();
                 this.senha = frame.getSenha();
                            
@@ -44,9 +43,7 @@ public class EventosLogin implements ActionListener {
                 } else {
                     JOptionPane.showMessageDialog(frame, "Login ou senha errado!");
                 }
-
                 break;
         }
-
     }
 }

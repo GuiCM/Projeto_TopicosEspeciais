@@ -159,7 +159,7 @@
                       <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="txtCEP" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
@@ -175,7 +175,7 @@
                       <Component id="txtCidade" alignment="0" min="-2" pref="317" max="-2" attributes="0"/>
                       <Component id="txtBairro" alignment="0" min="-2" pref="317" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="182" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -284,15 +284,15 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="txtIdade" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
-                      <Component id="txtNome" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                           <Component id="mskRG" alignment="0" max="32767" attributes="0"/>
                           <Component id="mskCPF" alignment="0" max="32767" attributes="0"/>
                           <Component id="mskDataNascimento" alignment="0" max="32767" attributes="0"/>
                           <Component id="cmbSexo" alignment="0" pref="154" max="32767" attributes="0"/>
                       </Group>
+                      <Component id="txtNome" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="414" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

@@ -1,14 +1,13 @@
-
-package java_cadastrotopicos.Imoveis;
+package Empreiteiras;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
-public class EventosCadastroImovel implements ActionListener {
-    private InternalFrameCadastroImovel frame;
+public class EventosCadastroEmpreiteiras implements ActionListener {
+    private InternalFrameCadastroEmpreiteiras frame;
     
-    public EventosCadastroImovel(InternalFrameCadastroImovel frame){
+    public EventosCadastroEmpreiteiras(InternalFrameCadastroEmpreiteiras frame){
         this.frame = frame;
     }
     
@@ -24,10 +23,11 @@ public class EventosCadastroImovel implements ActionListener {
                     frame.dispose();
                 else
                     frame.dispose();
-                break;    
+                break;   
             case "Salvar":
+                Empreiteiras empreiteira = new Empreiteiras(); //Salvar 
                 frame.dispose();
-                break;           
+                break;
         }
     }
 }

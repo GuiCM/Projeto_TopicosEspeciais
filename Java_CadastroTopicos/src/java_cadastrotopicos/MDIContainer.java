@@ -2,8 +2,8 @@ package java_cadastrotopicos;
 
 import Clientes.InternalFrameCadastroCliente;
 import Empreiteiras.InternalFrameCadastroEmpreiteiras;
-import java_cadastrotopicos.Sobre.InternalFrameSobre;
-import java_cadastrotopicos.Imoveis.InternalFrameCadastroImovel;
+import Sobre.InternalFrameSobre;
+import Imoveis.InternalFrameCadastroImovel;
 import javax.swing.JInternalFrame;
 
 public class MDIContainer extends javax.swing.JFrame {

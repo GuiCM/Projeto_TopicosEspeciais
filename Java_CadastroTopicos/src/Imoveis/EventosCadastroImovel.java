@@ -1,13 +1,14 @@
-package Clientes;
+
+package Imoveis;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
-public class EventosCadastroCliente implements ActionListener {
-    private InternalFrameCadastroCliente frame;
+public class EventosCadastroImovel implements ActionListener {
+    private InternalFrameCadastroImovel frame;
     
-    public EventosCadastroCliente(InternalFrameCadastroCliente frame){
+    public EventosCadastroImovel(InternalFrameCadastroImovel frame){
         this.frame = frame;
     }
     
@@ -23,11 +24,11 @@ public class EventosCadastroCliente implements ActionListener {
                     frame.dispose();
                 else
                     frame.dispose();
-                break;            
+                break;    
             case "Salvar":
-                Clientes cliente = new Clientes(); //Salvar  
+                Imoveis imovel = new Imoveis();
                 frame.dispose();
-                break;
+                break;           
         }
     }
 }

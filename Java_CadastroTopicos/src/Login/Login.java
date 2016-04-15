@@ -1,4 +1,4 @@
-package java_cadastrotopicos.Login;
+package Login;
 
 public class Login {
     public static String usuario = "admin";
