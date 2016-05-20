@@ -6,15 +6,15 @@ import java_cadastrotopicos.MDIContainer;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class EventosLogin implements ActionListener {
+public class LoginListener implements ActionListener {
 
     private final String mensagemSaida = "Você sairá de programa. Deseja realizar esta ação?";
 
-    private JFrameLogin frame;
+    private LoginJIF frame;
     private String usuario;
     private String senha;
 
-    public EventosLogin(JFrameLogin frame) {
+    public LoginListener(LoginJIF frame) {
         this.frame = frame;
 
     }

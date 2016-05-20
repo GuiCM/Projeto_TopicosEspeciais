@@ -1,10 +1,10 @@
 package Clientes;
 
-public class InternalFrameCadastroCliente extends javax.swing.JInternalFrame {
+public class ClienteJIF extends javax.swing.JInternalFrame {
     
-   EventosCadastroCliente listener = new EventosCadastroCliente(this);
+   ClienteListener listener = new ClienteListener(this);
     
-    public InternalFrameCadastroCliente() {        
+    public ClienteJIF() {        
         initComponents();             
     }
 

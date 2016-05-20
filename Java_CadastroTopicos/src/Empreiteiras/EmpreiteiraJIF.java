@@ -9,12 +9,11 @@ package Empreiteiras;
  *
  * @author guilh
  */
-public class InternalFrameCadastroEmpreiteiras extends javax.swing.JInternalFrame {
+public class EmpreiteiraJIF extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form InternalFrameCadastroEmpreiteiras
-     */
-    public InternalFrameCadastroEmpreiteiras() {
+    EmpreiteiraListener listener = new EmpreiteiraListener(this);
+    
+    public EmpreiteiraJIF() {
         initComponents();
     }
 
@@ -59,6 +58,7 @@ public class InternalFrameCadastroEmpreiteiras extends javax.swing.JInternalFram
         btnSalvar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
 
+        setClosable(true);
         setTitle("Adicionar");
         setMinimumSize(new java.awt.Dimension(795, 550));
         setPreferredSize(new java.awt.Dimension(795, 550));
@@ -222,8 +222,10 @@ public class InternalFrameCadastroEmpreiteiras extends javax.swing.JInternalFram
         btnSalvar.setMaximumSize(new java.awt.Dimension(80, 23));
         btnSalvar.setMinimumSize(new java.awt.Dimension(80, 23));
         btnSalvar.setPreferredSize(new java.awt.Dimension(80, 23));
+        btnSalvar.addActionListener(listener);
 
         btnExcluir.setText("Excluir");
+        btnExcluir.setEnabled(false);
         btnExcluir.setMaximumSize(new java.awt.Dimension(70, 23));
         btnExcluir.setMinimumSize(new java.awt.Dimension(70, 23));
         btnExcluir.setPreferredSize(new java.awt.Dimension(70, 23));
@@ -270,6 +272,9 @@ public class InternalFrameCadastroEmpreiteiras extends javax.swing.JInternalFram
                     .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
+
+        btnCancelar.addActionListener(listener);
+        btnExcluir.addActionListener(listener);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

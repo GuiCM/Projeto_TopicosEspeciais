@@ -9,19 +9,46 @@ package Imoveis;
  *
  * @author guilh
  */
-public class InternalFrameCadastroImovel extends javax.swing.JInternalFrame {
+public class ImovelJIF extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form InternalFrameCadastro
      */
-    
-   EventosCadastroImovel listener = new EventosCadastroImovel(this);
-    
-    public InternalFrameCadastroImovel() {
+    ImovelListener listener = new ImovelListener(this);
+
+    Imovel imoveis = new Imovel();
+
+    public Imovel getFieldData() {
+       
+        boolean result;
+       
+        if(cbIsAlugado.getSelectedItem().toString().equals("Sim"))
+        {
+            result = true;
+        }
+        else
+        {
+            result = false;
+        }
         
+        imoveis.setTipoImovel(cbTipoImovel.getSelectedItem().toString());
+        imoveis.setDimensoes(Float.parseFloat(txtDimensoes.getText()));
+        imoveis.setValor(Float.parseFloat(txtValor.getText()));
+        imoveis.setTipoMaterial(cbTipoMaterial.getSelectedItem().toString());
+        imoveis.setAlugado(result);
+        imoveis.setRua(txtRua.getText());
+        imoveis.setNumero(Integer.parseInt(txtNumero.getText()));
+        imoveis.setCep(txtCEP.getText());
+        imoveis.setCidade(txtCidade.getText());
+        imoveis.setEstado(txtEstado.getText());
+        imoveis.setBairro(txtBairro.getText());
+        return imoveis;
+    }
+
+    public ImovelJIF() {
+
         initComponents();
-        
-        
+
     }
 
     /**
@@ -60,8 +87,8 @@ public class InternalFrameCadastroImovel extends javax.swing.JInternalFrame {
         txtDimensoes = new javax.swing.JTextField();
         txtValor = new javax.swing.JTextField();
         cbTipoImovel = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        cbTipoMaterial = new javax.swing.JComboBox<>();
+        cbIsAlugado = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setTitle("Adicionar");
@@ -173,9 +200,9 @@ public class InternalFrameCadastroImovel extends javax.swing.JInternalFrame {
 
         cbTipoImovel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa", "Apartamento" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alvenaria", "Madeira" }));
+        cbTipoMaterial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alvenaria", "Madeira" }));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sim", "Não" }));
+        cbIsAlugado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sim", "Não" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -191,8 +218,8 @@ public class InternalFrameCadastroImovel extends javax.swing.JInternalFrame {
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbIsAlugado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbTipoMaterial, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtValor)
                     .addComponent(txtDimensoes)
                     .addComponent(cbTipoImovel, 0, 154, Short.MAX_VALUE))
@@ -216,10 +243,10 @@ public class InternalFrameCadastroImovel extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbTipoMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbIsAlugado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -276,9 +303,9 @@ public class InternalFrameCadastroImovel extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JComboBox<String> cbIsAlugado;
     private javax.swing.JComboBox<String> cbTipoImovel;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> cbTipoMaterial;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

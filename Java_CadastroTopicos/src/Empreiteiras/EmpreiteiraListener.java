@@ -1,13 +1,13 @@
-package Clientes;
+package Empreiteiras;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
-public class EventosCadastroCliente implements ActionListener {
-    private InternalFrameCadastroCliente frame;
+public class EmpreiteiraListener implements ActionListener {
+    private EmpreiteiraJIF frame;
     
-    public EventosCadastroCliente(InternalFrameCadastroCliente frame){
+    public EmpreiteiraListener(EmpreiteiraJIF frame){
         this.frame = frame;
     }
     
@@ -23,10 +23,14 @@ public class EventosCadastroCliente implements ActionListener {
                     frame.dispose();
                 else
                     frame.dispose();
-                break;            
+                break;   
             case "Salvar":
-                Clientes cliente = new Clientes(); //Salvar  
+                Empreiteira empreiteira = new Empreiteira(); //Salvar 
                 frame.dispose();
+                break;
+                
+            case "Excluir":
+                
                 break;
         }
     }

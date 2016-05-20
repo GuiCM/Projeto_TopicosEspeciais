@@ -1,6 +1,6 @@
 package Imoveis;
 
-public class Imoveis {
+public class Imovel {
 
     private String  tipoImovel;
     private float   dimensoes;

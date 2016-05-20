@@ -1,9 +1,9 @@
 package java_cadastrotopicos;
 
-import Clientes.InternalFrameCadastroCliente;
-import Empreiteiras.InternalFrameCadastroEmpreiteiras;
-import Sobre.InternalFrameSobre;
-import Imoveis.InternalFrameCadastroImovel;
+import Clientes.ClienteJIF;
+import Empreiteiras.EmpreiteiraJIF;
+import Sobre.SobreJIF;
+import Imoveis.ImovelJIF;
 import javax.swing.JInternalFrame;
 
 public class MDIContainer extends javax.swing.JFrame {
@@ -28,11 +28,12 @@ public class MDIContainer extends javax.swing.JFrame {
         menuAjudaSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sistema sem nome");
+        setTitle("Movile 1.7");
         setLocation(new java.awt.Point(0, 0));
-        setMinimumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
         setName("MainWindow"); // NOI18N
-        setResizable(false);
+        setPreferredSize(new java.awt.Dimension(1024, 768));
+        setSize(new java.awt.Dimension(1280, 720));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -101,18 +102,18 @@ public class MDIContainer extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuAjudaSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAjudaSobreActionPerformed
-        JInternalFrame internalSobre = new InternalFrameSobre();
+        JInternalFrame internalSobre = new SobreJIF();
         desktopPane.add(internalSobre);
         internalSobre.setVisible(true);
     }//GEN-LAST:event_menuAjudaSobreActionPerformed
@@ -122,7 +123,7 @@ public class MDIContainer extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void menuOpcoesCadastroImoveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOpcoesCadastroImoveisActionPerformed
-        JInternalFrame internalCadastroImoveis = new InternalFrameCadastroImovel();
+        JInternalFrame internalCadastroImoveis = new ImovelJIF();
         desktopPane.add(internalCadastroImoveis);
         internalCadastroImoveis.setVisible(true);
     }//GEN-LAST:event_menuOpcoesCadastroImoveisActionPerformed
@@ -132,14 +133,14 @@ public class MDIContainer extends javax.swing.JFrame {
     }//GEN-LAST:event_menuOpcoesSairActionPerformed
 
     private void menuOpcoesCadastroClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOpcoesCadastroClientesActionPerformed
-        JInternalFrame internalCadastroClientes = new InternalFrameCadastroCliente();
+        JInternalFrame internalCadastroClientes = new ClienteJIF();
         desktopPane.add(internalCadastroClientes);
         internalCadastroClientes.setVisible(true);
     }//GEN-LAST:event_menuOpcoesCadastroClientesActionPerformed
 
     private void menuOpcoesCadastroEmpreiteirasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOpcoesCadastroEmpreiteirasActionPerformed
         // TODO add your handling code here:
-        JInternalFrame internalCadastroEmpreiteiras = new InternalFrameCadastroEmpreiteiras();
+        JInternalFrame internalCadastroEmpreiteiras = new EmpreiteiraJIF();
         desktopPane.add(internalCadastroEmpreiteiras);
         internalCadastroEmpreiteiras.setVisible(true);
     }//GEN-LAST:event_menuOpcoesCadastroEmpreiteirasActionPerformed

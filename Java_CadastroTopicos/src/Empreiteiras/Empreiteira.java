@@ -1,12 +1,13 @@
-package Clientes;
+package Empreiteiras;
 
-public class Clientes {
+public class Empreiteira {
+
     private String nome;
-    private int idade;
-    private String dataNascimento;
-    private char sexo;
-    private String cpf;
-    private String rg;
+    private String proprietario;
+    private String cnpj;
+    private String telefone;
+    private String fax;
+    private String email;
     
     private String rua;
     private int numero;
@@ -15,31 +16,29 @@ public class Clientes {
     private String estado;
     private String bairro;
 
-    /**
-     * ***** GET'S ******
-     */
-    public String getNome() {
+    /****** GET'S ******/
+    private String getNome() {
         return this.nome;
     }
 
-    public int getIdade() {
-        return this.idade;
+    private String getProprietario() {
+        return this.proprietario;
     }
 
-    public String getDataNascimento() {
-        return this.dataNascimento;
+    private String getCnpj() {
+        return this.cnpj;
     }
 
-    public char getSexo() {
-        return this.sexo;
+    private String getTelefone() {
+        return this.telefone;
     }
 
-    public String getCpf() {
-        return this.cpf;
+    private String getFax() {
+        return this.fax;
     }
 
-    public String getRg() {
-        return this.rg;
+    private String getEmail() {
+        return this.email;
     }
     
     public String getRua() {
@@ -65,30 +64,30 @@ public class Clientes {
     public String getBairro() {
         return this.bairro;
     }
-    
-    /******* SET'S *******/
-    public void setNome(String nome) {
+
+    /****** SET'S ******/
+    private void setNome(String nome) {
         this.nome = nome;
     }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
+    
+    private void setProprietario(String proprietario) {
+        this.proprietario = proprietario;
     }
-
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    
+    private void setCnpj(String cnpj) {
+        this.cnpj = cnpj;                
     }
-
-    public void setSexo(char sexo) {
-        this.sexo = sexo;
+    
+    private void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    
+    private void setFax(String fax) {
+        this.fax = fax;
     }
-
-    public void setRg(String rg) {
-        this.rg = rg;
+    
+    private void setEmail(String email) {
+        this.email = email;
     }
     
     public void setRua(String rua) {

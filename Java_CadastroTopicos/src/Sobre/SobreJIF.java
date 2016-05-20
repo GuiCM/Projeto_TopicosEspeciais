@@ -9,12 +9,12 @@ package Sobre;
  *
  * @author guilh
  */
-public class InternalFrameSobre extends javax.swing.JInternalFrame {
+public class SobreJIF extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form InternalFrameSobre
      */
-    public InternalFrameSobre() {
+    public SobreJIF() {
         initComponents();
     }
 
@@ -95,7 +95,7 @@ public class InternalFrameSobre extends javax.swing.JInternalFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("1.0");
+        jLabel5.setText("1.7");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
