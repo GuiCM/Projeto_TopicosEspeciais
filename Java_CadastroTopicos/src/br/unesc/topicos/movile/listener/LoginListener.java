@@ -21,6 +21,14 @@ public class LoginListener implements ActionListener {
 
     }
 
+    public boolean isAlpha(String name) {
+    return name.matches("[a-zA-Z-0-9]+[0-9]");
+}
+    
+    public boolean isOnlyNum(String name) {
+    return name.matches("[0-9]+");
+}
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         
@@ -37,7 +45,17 @@ public class LoginListener implements ActionListener {
             case "Entrar":                
                 this.usuario = frame.getUsuario();
                 this.senha = frame.getSenha();
-                           
+                          
+                if(isOnlyNum(usuario.substring(0,1)))
+                {
+                    JOptionPane.showMessageDialog(frame, "Login não pode começar com número");
+                    return;
+                }
+                if(!isAlpha(usuario))
+                {
+                    JOptionPane.showMessageDialog(frame, "Login tem que ser alfanúmerico");
+                    return;
+                }
                 if (usuario.equals(Login.usuario) && senha.equals(Login.senha)) {
                     JFrame principal = new MainJF();
                     principal.setVisible(true);
