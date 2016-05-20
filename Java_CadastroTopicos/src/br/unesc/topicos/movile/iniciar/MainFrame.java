@@ -1,14 +1,14 @@
-package java_cadastrotopicos;
+package br.unesc.topicos.movile.iniciar;
 
-import Clientes.ClienteJIF;
-import Empreiteiras.EmpreiteiraJIF;
-import Sobre.SobreJIF;
-import Imoveis.ImovelJIF;
+import br.unesc.topicos.movile.view.ClienteJIF;
+import br.unesc.topicos.movile.view.EmpreiteiraJIF;
+import br.unesc.topicos.movile.view.SobreJIF;
+import br.unesc.topicos.movile.view.ImovelJIF;
 import javax.swing.JInternalFrame;
 
-public class MDIContainer extends javax.swing.JFrame {
+public class MainFrame extends javax.swing.JFrame {
     
-    public MDIContainer() {
+    public MainFrame() {
         initComponents();
     }
 
@@ -32,7 +32,6 @@ public class MDIContainer extends javax.swing.JFrame {
         setLocation(new java.awt.Point(0, 0));
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setName("MainWindow"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1024, 768));
         setSize(new java.awt.Dimension(1280, 720));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -160,21 +159,23 @@ public class MDIContainer extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MDIContainer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MDIContainer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MDIContainer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MDIContainer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MDIContainer().setVisible(true);
+                new MainFrame().setVisible(true);
             }
         });
     }

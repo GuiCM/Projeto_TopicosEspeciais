@@ -1,8 +1,10 @@
-package Login;
+package br.unesc.topicos.movile.listener;
 
+import br.unesc.topicos.movile.view.LoginJIF;
+import br.unesc.topicos.movile.bean.Login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java_cadastrotopicos.MDIContainer;
+import br.unesc.topicos.movile.iniciar.MainFrame;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -37,7 +39,7 @@ public class LoginListener implements ActionListener {
                 this.senha = frame.getSenha();
                            
                 if (usuario.equals(Login.usuario) && senha.equals(Login.senha)) {
-                    JFrame principal = new MDIContainer();
+                    JFrame principal = new MainFrame();
                     principal.setVisible(true);
                     frame.dispose();
                 } else {

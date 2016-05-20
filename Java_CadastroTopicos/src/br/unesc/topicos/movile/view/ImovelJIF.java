@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Imoveis;
+package br.unesc.topicos.movile.view;
+
+import br.unesc.topicos.movile.bean.Imovel;
+import br.unesc.topicos.movile.listener.ImovelListener;
 
 /**
  *

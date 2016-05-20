@@ -1,4 +1,6 @@
-package Clientes;
+package br.unesc.topicos.movile.view;
+
+import br.unesc.topicos.movile.listener.ClienteListener;
 
 public class ClienteJIF extends javax.swing.JInternalFrame {
     

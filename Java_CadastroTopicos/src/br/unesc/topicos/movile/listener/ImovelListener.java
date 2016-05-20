@@ -1,36 +1,37 @@
-package Empreiteiras;
+package br.unesc.topicos.movile.listener;
 
+import br.unesc.topicos.movile.view.ImovelJIF;
+import br.unesc.topicos.movile.bean.Imovel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
-public class EmpreiteiraListener implements ActionListener {
-    private EmpreiteiraJIF frame;
-    
-    public EmpreiteiraListener(EmpreiteiraJIF frame){
+public class ImovelListener implements ActionListener {
+
+    private ImovelJIF frame;
+
+    public ImovelListener(ImovelJIF frame) {
         this.frame = frame;
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Cancelar":
                 int result;
                 result = JOptionPane.showConfirmDialog(null, "Deseja salvar alterações?", "Mensagem do Sistema", JOptionPane.YES_NO_OPTION);
-                
-                if (result == 0) 
-                    //TODO: salvar
+
+                if (result == 0) //TODO: salvar
+                {
                     frame.dispose();
-                else
+                } else {
                     frame.dispose();
-                break;   
-            case "Salvar":
-                Empreiteira empreiteira = new Empreiteira(); //Salvar 
-                frame.dispose();
+                }
                 break;
-                
-            case "Excluir":
-                
+            case "Salvar":
+                Imovel imoveis = frame.getFieldData();
+                JOptionPane.showMessageDialog(frame, imoveis.getAlugado() + imoveis.getCidade() + imoveis.getTipoImovel());
+                frame.dispose();
                 break;
         }
     }

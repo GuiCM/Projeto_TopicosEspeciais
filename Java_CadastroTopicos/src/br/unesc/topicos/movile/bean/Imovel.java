@@ -1,4 +1,4 @@
-package Imoveis;
+package br.unesc.topicos.movile.bean;
 
 public class Imovel {
 
