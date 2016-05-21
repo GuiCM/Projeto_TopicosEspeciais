@@ -11,47 +11,29 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
-public class Persistencia implements Serializable {
+public class Persistencia {
 
-    public static String loginFile = "login.dat";
+    public static String userFile = "login.dat";
+    public static String logFile = "info.log";
 
-    /* public void salvar(ArrayList<Pessoa> p) {
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream(loginFile);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(p);
-            objectOutputStream.flush();
-            objectOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+    public String getHora() {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        return "[" + dateFormat.format(date) + "]";
     }
 
-    public ArrayList<Pessoa> ler(String loginFile) {
-        ArrayList<Pessoa> contato = null;
+    public void salvarArquivo(String str, String path) {
         try {
-            FileInputStream leitorArquivos = new FileInputStream(loginFile);
-            ObjectInputStream objectInputStream = new ObjectInputStream(leitorArquivos);
-
-            contato = (ArrayList<Pessoa>) objectInputStream.readObject();
-
-            leitorArquivos.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return contato;
-    }*/
-    public void salvarLogin(String login) {
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream(loginFile);
+            FileOutputStream fileOutputStream = new FileOutputStream(path);
             int tamanho = 0;
 
-            while (tamanho < login.length()) {
-                fileOutputStream.write((int) login.charAt(tamanho++));
+            while (tamanho < str.length()) {
+                fileOutputStream.write((int) str.charAt(tamanho++));
             }
 
             fileOutputStream.flush();
@@ -63,16 +45,16 @@ public class Persistencia implements Serializable {
 
     }
 
-    public String lerLogin(String logFile) {
+    public String lerArquivo(String logFile) {
         java.io.File f = new java.io.File(logFile);
         if (f.exists() && !f.isDirectory()) {
 
-            String login = "";
+            String str = "";
             try {
                 FileInputStream leitorArquivos = new FileInputStream(logFile);
                 int lido = leitorArquivos.read();
                 while (lido != -1) {
-                    login += (char) lido;
+                    str += (char) lido;
                     lido = leitorArquivos.read();
                 }
                 leitorArquivos.close();
@@ -80,7 +62,7 @@ public class Persistencia implements Serializable {
                 e.printStackTrace();
             }
 
-            return login;
+            return str;
         } else {
             return "";
         }

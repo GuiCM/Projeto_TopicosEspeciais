@@ -1,13 +1,20 @@
 package br.unesc.topicos.movile.view;
 
+import br.unesc.topicos.movile.file.Persistencia;
 import br.unesc.topicos.movile.listener.ClienteListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ClienteJIF extends javax.swing.JInternalFrame {
     
    ClienteListener listener = new ClienteListener(this);
-    
-    public ClienteJIF() {        
-        initComponents();             
+    Persistencia persi = new Persistencia();
+    public ClienteJIF() {  
+        
+        initComponents();    
+  
+        persi.salvarArquivo(persi.getHora()+ ": Usuário acessou tela de cadastro de cliente.", Persistencia.logFile);
     }
 
     @SuppressWarnings("unchecked")

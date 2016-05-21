@@ -23,7 +23,9 @@ public class LoginListener implements ActionListener {
     }
 
     public boolean isAlpha(String name) {
-    return name.matches("[a-zA-Z-0-9]+[0-9]");
+        System.out.println(name);
+        
+    return name.matches("[a-zA-Z-0-9]+");
 }
     
     public boolean isOnlyNum(String name) {
@@ -68,7 +70,7 @@ public class LoginListener implements ActionListener {
                     return;
                 }
                 Persistencia persi = new Persistencia();
-                persi.salvarLogin(this.usuario);
+                persi.salvarArquivo(this.usuario, Persistencia.userFile);
                  
                 break;
         }

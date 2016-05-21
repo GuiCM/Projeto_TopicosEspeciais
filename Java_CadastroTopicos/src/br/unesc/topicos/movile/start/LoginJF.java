@@ -18,7 +18,7 @@ public class LoginJF extends javax.swing.JFrame {
         initComponents();
 
         Persistencia persistencia = new Persistencia();
-        this.txtUsuario.setText(persistencia.lerLogin(persistencia.loginFile));
+        this.txtUsuario.setText(persistencia.lerArquivo(persistencia.userFile));
 
     }
 

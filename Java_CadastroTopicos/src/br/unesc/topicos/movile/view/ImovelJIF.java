@@ -95,6 +95,7 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setTitle("Adicionar");
+        setFrameIcon(null);
         setMinimumSize(new java.awt.Dimension(795, 550));
         setPreferredSize(new java.awt.Dimension(795, 550));
 
