@@ -1,10 +1,11 @@
 package br.unesc.topicos.movile.listener;
 
-import br.unesc.topicos.movile.iniciar.LoginJF;
+import br.unesc.topicos.movile.start.LoginJF;
 import br.unesc.topicos.movile.bean.Login;
+import br.unesc.topicos.movile.file.Persistencia;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import br.unesc.topicos.movile.iniciar.MainJF;
+import br.unesc.topicos.movile.start.MainJF;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -42,7 +43,9 @@ public class LoginListener implements ActionListener {
                 }
                 break;
 
-            case "Entrar":                
+            case "Entrar":     
+            
+           
                 this.usuario = frame.getUsuario();
                 this.senha = frame.getSenha();
                           
@@ -62,7 +65,11 @@ public class LoginListener implements ActionListener {
                     frame.dispose();
                 } else {
                     JOptionPane.showMessageDialog(frame, "Login ou senha errado!");
+                    return;
                 }
+                Persistencia persi = new Persistencia();
+                persi.salvarLogin(this.usuario);
+                 
                 break;
         }
     }

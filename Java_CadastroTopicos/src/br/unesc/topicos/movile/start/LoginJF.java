@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.unesc.topicos.movile.iniciar;
+package br.unesc.topicos.movile.start;
 
+import br.unesc.topicos.movile.file.Persistencia;
 import br.unesc.topicos.movile.listener.LoginListener;
 
 /**
@@ -13,25 +14,24 @@ import br.unesc.topicos.movile.listener.LoginListener;
  */
 public class LoginJF extends javax.swing.JFrame {
 
-   
-
     public LoginJF() {
         initComponents();
-     
-    }
-    
-     private LoginListener listener = new LoginListener(this);
 
-    public String  getUsuario()
-    {    
+        Persistencia persistencia = new Persistencia();
+        this.txtUsuario.setText(persistencia.lerLogin(persistencia.loginFile));
+
+    }
+
+    private LoginListener listener = new LoginListener(this);
+
+    public String getUsuario() {
         return this.txtUsuario.getText();
     }
-    
-     public String  getSenha()
-    {    
+
+    public String getSenha() {
         return this.txtUsuario.getText();
     }
-    
+
     //   private LoginListener listener = new LoginListener(this, "", "");
     /**
      * This method is called from within the constructor to initialize the form.

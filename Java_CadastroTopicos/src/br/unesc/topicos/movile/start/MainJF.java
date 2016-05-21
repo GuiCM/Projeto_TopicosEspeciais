@@ -1,4 +1,4 @@
-package br.unesc.topicos.movile.iniciar;
+package br.unesc.topicos.movile.start;
 
 import br.unesc.topicos.movile.view.ClienteJIF;
 import br.unesc.topicos.movile.view.EmpreiteiraJIF;

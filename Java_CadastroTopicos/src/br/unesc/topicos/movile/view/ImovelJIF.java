@@ -19,7 +19,7 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
      */
     ImovelListener listener = new ImovelListener(this);
 
-    Imovel imoveis = new Imovel();
+   private Imovel imoveis = new Imovel();
 
     public Imovel getFieldData() {
        
