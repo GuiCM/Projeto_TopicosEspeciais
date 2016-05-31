@@ -27,10 +27,9 @@ public class EmpreiteiraListener implements ActionListener {
                     frame.dispose();
                 break;   
             case "Salvar":
-                Empreiteira empreiteira = new Empreiteira(); //Salvar 
+                Empreiteira empreiteira = frame.getFieldData();
                 frame.dispose();
-                break;
-                
+                break;               
             case "Excluir":
                 
                 break;

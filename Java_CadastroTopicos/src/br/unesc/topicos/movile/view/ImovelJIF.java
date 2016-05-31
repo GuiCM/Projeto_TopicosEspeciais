@@ -1,57 +1,40 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.unesc.topicos.movile.view;
 
 import br.unesc.topicos.movile.bean.Imovel;
 import br.unesc.topicos.movile.listener.ImovelListener;
 
-/**
- *
- * @author guilh
- */
-public class ImovelJIF extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form InternalFrameCadastro
-     */
-    ImovelListener listener = new ImovelListener(this);
-
-   private Imovel imoveis = new Imovel();
-
-    public Imovel getFieldData() {
-       
-        boolean result;
-       
-        if(cbIsAlugado.getSelectedItem().toString().equals("Sim"))
-        {
-            result = true;
-        }
-        else
-        {
-            result = false;
-        }
-        
-        imoveis.setTipoImovel(cbTipoImovel.getSelectedItem().toString());
-        imoveis.setDimensoes(Float.parseFloat(txtDimensoes.getText()));
-        imoveis.setValor(Float.parseFloat(txtValor.getText()));
-        imoveis.setTipoMaterial(cbTipoMaterial.getSelectedItem().toString());
-        imoveis.setAlugado(result);
-        imoveis.setRua(txtRua.getText());
-        imoveis.setNumero(Integer.parseInt(txtNumero.getText()));
-        imoveis.setCep(txtCEP.getText());
-        imoveis.setCidade(txtCidade.getText());
-        imoveis.setEstado(txtEstado.getText());
-        imoveis.setBairro(txtBairro.getText());
-        return imoveis;
-    }
+public class ImovelJIF extends javax.swing.JInternalFrame { 
+    private ImovelListener listener = new ImovelListener(this);
+    private Imovel imovel = new Imovel();
 
     public ImovelJIF() {
 
         initComponents();
 
+    }
+    
+    public Imovel getFieldData() {       
+        boolean result;
+       
+        if(cbIsAlugado.getSelectedItem().toString().equals("Sim")) {
+            result = true;
+        } else {
+            result = false;
+        }
+        
+        imovel.setTipoImovel(cbTipoImovel.getSelectedItem().toString());
+        imovel.setDimensoes(Float.parseFloat(txtDimensoes.getText()));
+        imovel.setValor(Float.parseFloat(txtValor.getText()));
+        imovel.setTipoMaterial(cbTipoMaterial.getSelectedItem().toString());
+        imovel.setAlugado(result);
+        imovel.setRua(txtRua.getText());
+        imovel.setNumero(Integer.parseInt(txtNumero.getText()));
+        imovel.setCep(txtCEP.getText());
+        imovel.setCidade(txtCidade.getText());
+        imovel.setEstado(txtEstado.getText());
+        imovel.setBairro(txtBairro.getText());
+        
+        return imovel;
     }
 
     /**

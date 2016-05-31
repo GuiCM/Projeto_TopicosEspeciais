@@ -30,7 +30,7 @@ public class ImovelListener implements ActionListener {
                 break;
             case "Salvar":
                 Imovel imoveis = frame.getFieldData();
-                JOptionPane.showMessageDialog(frame, imoveis.getAlugado() + imoveis.getCidade() + imoveis.getTipoImovel());
+                //JOptionPane.showMessageDialog(frame, imoveis.getAlugado() + imoveis.getCidade() + imoveis.getTipoImovel());
                 frame.dispose();
                 break;
         }

@@ -1,20 +1,43 @@
 package br.unesc.topicos.movile.view;
 
+import br.unesc.topicos.movile.bean.Cliente;
 import br.unesc.topicos.movile.file.Persistencia;
 import br.unesc.topicos.movile.listener.ClienteListener;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-public class ClienteJIF extends javax.swing.JInternalFrame {
+public class ClienteJIF extends javax.swing.JInternalFrame {    
+    private ClienteListener listener = new ClienteListener(this);
+    private Cliente cliente = new Cliente();
+    private Persistencia persistencia = new Persistencia();
     
-   ClienteListener listener = new ClienteListener(this);
-    Persistencia persi = new Persistencia();
-    public ClienteJIF() {  
-        
+    public ClienteJIF() {          
         initComponents();    
   
-        persi.salvarArquivo(persi.getHora()+ ": Usuário acessou tela de cadastro de cliente.", Persistencia.logFile);
+        persistencia.salvarArquivo(persistencia.getHora()+ ": Usuário acessou tela de cadastro de cliente.", Persistencia.logFile);
+    }
+    
+    public Cliente getFieldData() {
+        char sexo = '\0';
+        
+        if (cmbSexo.getSelectedItem().toString().equals("Masculino")) {
+            sexo = 'M';
+        } else {
+            sexo = 'F';
+        }
+        
+        cliente.setNome(txtNome.getText());
+        cliente.setIdade(Integer.parseInt(txtIdade.getText()));
+        cliente.setDataNascimento(mskDataNascimento.getText());
+        cliente.setSexo(sexo);
+        cliente.setCpf(mskCPF.getText());
+        cliente.setRg(mskRG.getText());
+        cliente.setRua(txtRua.getText());
+        cliente.setNumero(Integer.parseInt(txtNumero.getText()));
+        cliente.setCep(txtCEP.getText());
+        cliente.setCidade(txtCidade.getText());
+        cliente.setEstado(txtEstado.getText());
+        cliente.setBairro(txtBairro.getText());
+        
+        return cliente;
     }
 
     @SuppressWarnings("unchecked")

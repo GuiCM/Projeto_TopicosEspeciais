@@ -21,23 +21,23 @@ public class Empreiteira {
         return this.nome;
     }
 
-    private String getProprietario() {
+    public String getProprietario() {
         return this.proprietario;
     }
 
-    private String getCnpj() {
+    public String getCnpj() {
         return this.cnpj;
     }
 
-    private String getTelefone() {
+    public String getTelefone() {
         return this.telefone;
     }
 
-    private String getFax() {
+    public String getFax() {
         return this.fax;
     }
 
-    private String getEmail() {
+    public String getEmail() {
         return this.email;
     }
     
@@ -66,27 +66,27 @@ public class Empreiteira {
     }
 
     /****** SET'S ******/
-    private void setNome(String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
     
-    private void setProprietario(String proprietario) {
+    public void setProprietario(String proprietario) {
         this.proprietario = proprietario;
     }
     
-    private void setCnpj(String cnpj) {
+    public void setCnpj(String cnpj) {
         this.cnpj = cnpj;                
     }
     
-    private void setTelefone(String telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
     
-    private void setFax(String fax) {
+    public void setFax(String fax) {
         this.fax = fax;
     }
     
-    private void setEmail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
     

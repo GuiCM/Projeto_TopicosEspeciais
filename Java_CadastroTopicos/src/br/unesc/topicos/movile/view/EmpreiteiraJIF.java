@@ -1,23 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.unesc.topicos.movile.view;
 
+import br.unesc.topicos.movile.bean.Empreiteira;
 import br.unesc.topicos.movile.listener.EmpreiteiraListener;
 
-/**
- *
- * @author guilh
- */
 public class EmpreiteiraJIF extends javax.swing.JInternalFrame {
-
-    EmpreiteiraListener listener = new EmpreiteiraListener(this);
+    private EmpreiteiraListener listener = new EmpreiteiraListener(this);
+    private Empreiteira empreiteira = new Empreiteira();
     
     public EmpreiteiraJIF() {
         initComponents();
     }
+    
+    public Empreiteira getFieldData() {  
+        empreiteira.setNome(txtNome.getText());
+        empreiteira.setProprietario(txtProprietario.getText());
+        empreiteira.setCnpj(mskCNPJ.getText());
+        empreiteira.setTelefone(mskTelefone.getText());
+        empreiteira.setFax(txtFax.getText());
+        empreiteira.setEmail(txtEmail.getText());
+        empreiteira.setRua(txtRua.getText());
+        empreiteira.setNumero(Integer.parseInt(txtRua.getText()));
+        empreiteira.setCep(txtCEP.getText());
+        empreiteira.setCidade(txtCidade.getText());
+        empreiteira.setEstado(txtEstado.getText());
+        empreiteira.setBairro(txtBairro.getText());
+        
+        return empreiteira;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

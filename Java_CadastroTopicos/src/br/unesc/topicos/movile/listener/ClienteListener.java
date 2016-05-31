@@ -27,8 +27,10 @@ public class ClienteListener implements ActionListener {
                     frame.dispose();
                 break;            
             case "Salvar":
-                Cliente cliente = new Cliente(); //Salvar  
+                Cliente cliente = frame.getFieldData(); 
                 frame.dispose();
+                break;
+            case "Excluir":
                 break;
         }
     }
