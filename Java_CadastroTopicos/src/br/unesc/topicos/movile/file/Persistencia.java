@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.unesc.topicos.movile.file;
 
 import java.io.FileInputStream;
@@ -18,13 +13,13 @@ import java.util.Date;
 
 public class Persistencia {
 
-    public static String userFile = "login.dat";
-    public static String logFile = "info.log";
+    public static String userFile = "login.dat"; //Arquivo para gravar ultimo login
+    public static String logFile = "info.log"; //Arquivo de logs
 
     public String getHora() {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
-        return "[" + dateFormat.format(date) + "]";
+        return "[" + dateFormat.format(date) + "]: ";
     }
 
     public void salvarArquivo(String str, String path) {

@@ -1,6 +1,7 @@
 package br.unesc.topicos.movile.listener;
 
 import br.unesc.topicos.movile.bean.Empreiteira;
+import br.unesc.topicos.movile.file.Persistencia;
 import br.unesc.topicos.movile.view.EmpreiteiraJIF;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,6 +29,11 @@ public class EmpreiteiraListener implements ActionListener {
                 break;   
             case "Salvar":
                 Empreiteira empreiteira = frame.getFieldData();
+                
+                //Salva um log de cadastro
+                Persistencia persistencia = new Persistencia();
+                persistencia.salvarArquivo("Nova empreiteira cadastrada.", Persistencia.logFile);
+                
                 frame.dispose();
                 break;               
             case "Excluir":

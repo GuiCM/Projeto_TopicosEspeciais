@@ -2,6 +2,7 @@ package br.unesc.topicos.movile.listener;
 
 import br.unesc.topicos.movile.view.ImovelJIF;
 import br.unesc.topicos.movile.bean.Imovel;
+import br.unesc.topicos.movile.file.Persistencia;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -21,7 +22,7 @@ public class ImovelListener implements ActionListener {
                 int result;
                 result = JOptionPane.showConfirmDialog(null, "Deseja salvar alterações?", "Mensagem do Sistema", JOptionPane.YES_NO_OPTION);
 
-                if (result == 0) //TODO: salvar
+                if (result == 0)
                 {
                     frame.dispose();
                 } else {
@@ -29,8 +30,12 @@ public class ImovelListener implements ActionListener {
                 }
                 break;
             case "Salvar":
-                Imovel imoveis = frame.getFieldData();
-                //JOptionPane.showMessageDialog(frame, imoveis.getAlugado() + imoveis.getCidade() + imoveis.getTipoImovel());
+                Imovel imovel = frame.getFieldData();
+                
+                //Salva um log de cadastro
+                Persistencia persistencia = new Persistencia();
+                persistencia.salvarArquivo("Novo imóvel cadastrado.", Persistencia.logFile);
+                
                 frame.dispose();
                 break;
         }

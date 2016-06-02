@@ -44,23 +44,24 @@ public class LoginListener implements ActionListener {
                     System.exit(0);
                 }
                 break;
-
             case "Entrar":     
-            
-           
                 this.usuario = frame.getUsuario();
                 this.senha = frame.getSenha();
-                          
+                
+                //Evita o login começar com número
                 if(isOnlyNum(usuario.substring(0,1)))
                 {
                     JOptionPane.showMessageDialog(frame, "Login não pode começar com número");
                     return;
                 }
+                
+                //Não permite símbolos no login
                 if(!isAlpha(usuario))
                 {
                     JOptionPane.showMessageDialog(frame, "Login tem que ser alfanúmerico");
                     return;
                 }
+                
                 if (usuario.equals(Login.usuario) && senha.equals(Login.senha)) {
                     JFrame principal = new MainJF();
                     principal.setVisible(true);
@@ -69,9 +70,9 @@ public class LoginListener implements ActionListener {
                     JOptionPane.showMessageDialog(frame, "Login ou senha errado!");
                     return;
                 }
-                Persistencia persi = new Persistencia();
-                persi.salvarArquivo(this.usuario, Persistencia.userFile);
-                 
+                
+                Persistencia persistencia = new Persistencia();
+                persistencia.salvarArquivo("Novo login no sistema, ID: " + this.usuario, Persistencia.userFile);
                 break;
         }
     }
