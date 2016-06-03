@@ -22,13 +22,33 @@ public class Persistencia {
         return "[" + dateFormat.format(date) + "]: ";
     }
 
-    public void salvarArquivo(String str, String path) {
+    public void salvarArquivoDadosLogin(String str) {
         try {
-            FileOutputStream fileOutputStream = new FileOutputStream(path);
+            FileOutputStream fileOutputStream = new FileOutputStream(userFile);
             int tamanho = 0;
 
             while (tamanho < str.length()) {
                 fileOutputStream.write((int) str.charAt(tamanho++));
+            }
+
+            fileOutputStream.flush();
+            fileOutputStream.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    
+    public void salvarArquivoGeral(String str) {
+        String strSalvar = System.getProperty("line.separator") + getHora()+str;
+         
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(logFile, true);
+            int tamanho = 0;
+
+            while (tamanho < strSalvar.length()) {
+                fileOutputStream.write((int) strSalvar.charAt(tamanho++));
             }
 
             fileOutputStream.flush();

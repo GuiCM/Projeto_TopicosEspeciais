@@ -23,18 +23,17 @@ public class LoginListener implements ActionListener {
     }
 
     public boolean isAlpha(String name) {
-        System.out.println(name);
-        
-    return name.matches("[a-zA-Z-0-9]+");
-}
-    
+
+        return name.matches("[a-zA-Z-0-9]+");
+    }
+
     public boolean isOnlyNum(String name) {
-    return name.matches("[0-9]+");
-}
-    
+        return name.matches("[0-9]+");
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+
         switch (e.getActionCommand()) {
             case "Sair":
                 int result;
@@ -44,24 +43,22 @@ public class LoginListener implements ActionListener {
                     System.exit(0);
                 }
                 break;
-            case "Entrar":     
+            case "Entrar":
                 this.usuario = frame.getUsuario();
                 this.senha = frame.getSenha();
-                
+
                 //Evita o login começar com número
-                if(isOnlyNum(usuario.substring(0,1)))
-                {
+                if (isOnlyNum(usuario.substring(0, 1))) {
                     JOptionPane.showMessageDialog(frame, "Login não pode começar com número");
                     return;
                 }
-                
+
                 //Não permite símbolos no login
-                if(!isAlpha(usuario))
-                {
+                if (!isAlpha(usuario)) {
                     JOptionPane.showMessageDialog(frame, "Login tem que ser alfanúmerico");
                     return;
                 }
-                
+
                 if (usuario.equals(Login.usuario) && senha.equals(Login.senha)) {
                     JFrame principal = new MainJF();
                     principal.setVisible(true);
@@ -70,9 +67,11 @@ public class LoginListener implements ActionListener {
                     JOptionPane.showMessageDialog(frame, "Login ou senha errado!");
                     return;
                 }
-                
+
                 Persistencia persistencia = new Persistencia();
-                persistencia.salvarArquivo("Novo login no sistema, ID: " + this.usuario, Persistencia.userFile);
+                persistencia.salvarArquivoGeral("Novo login no sistema, ID: " + this.usuario);
+                persistencia.salvarArquivoDadosLogin(this.usuario);
+
                 break;
         }
     }

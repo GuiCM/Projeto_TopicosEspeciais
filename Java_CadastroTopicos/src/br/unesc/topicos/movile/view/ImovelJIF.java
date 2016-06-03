@@ -1,6 +1,7 @@
 package br.unesc.topicos.movile.view;
 
 import br.unesc.topicos.movile.bean.Imovel;
+import br.unesc.topicos.movile.file.Persistencia;
 import br.unesc.topicos.movile.listener.ImovelListener;
 
 public class ImovelJIF extends javax.swing.JInternalFrame { 
@@ -10,6 +11,8 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
     public ImovelJIF() {
 
         initComponents();
+        Persistencia persistencia = new Persistencia();
+        persistencia.salvarArquivoGeral("Usuário acessou tela de cadastro de imóveis.");
 
     }
     

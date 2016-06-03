@@ -32,7 +32,7 @@ public class EmpreiteiraListener implements ActionListener {
                 
                 //Salva um log de cadastro
                 Persistencia persistencia = new Persistencia();
-                persistencia.salvarArquivo("Nova empreiteira cadastrada.", Persistencia.logFile);
+                persistencia.salvarArquivoGeral("Nova empreiteira cadastrada.");
                 
                 frame.dispose();
                 break;               

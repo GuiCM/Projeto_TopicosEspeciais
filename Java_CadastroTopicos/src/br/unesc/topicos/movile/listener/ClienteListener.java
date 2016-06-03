@@ -32,7 +32,7 @@ public class ClienteListener implements ActionListener {
                 
                 //Salva um log de cadastro
                 Persistencia persistencia = new Persistencia();
-                persistencia.salvarArquivo("Novo cliente cadastrado.", Persistencia.logFile);
+                persistencia.salvarArquivoGeral("Novo cliente cadastrado.");
                 
                 frame.dispose();
                 break;

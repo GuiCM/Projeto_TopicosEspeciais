@@ -12,7 +12,7 @@ public class ClienteJIF extends javax.swing.JInternalFrame {
     public ClienteJIF() {          
         initComponents();    
   
-        persistencia.salvarArquivo(persistencia.getHora()+ ": Usuário acessou tela de cadastro de cliente.", Persistencia.logFile);
+        persistencia.salvarArquivoGeral("Usuário acessou tela de cadastro de cliente.");
     }
     
     public Cliente getFieldData() {

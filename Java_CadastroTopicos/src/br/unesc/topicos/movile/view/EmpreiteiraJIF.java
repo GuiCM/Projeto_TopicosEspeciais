@@ -1,6 +1,7 @@
 package br.unesc.topicos.movile.view;
 
 import br.unesc.topicos.movile.bean.Empreiteira;
+import br.unesc.topicos.movile.file.Persistencia;
 import br.unesc.topicos.movile.listener.EmpreiteiraListener;
 
 public class EmpreiteiraJIF extends javax.swing.JInternalFrame {
@@ -9,6 +10,9 @@ public class EmpreiteiraJIF extends javax.swing.JInternalFrame {
     
     public EmpreiteiraJIF() {
         initComponents();
+        
+        Persistencia persistencia = new Persistencia();
+        persistencia.salvarArquivoGeral("Usuário acessou tela de cadastro de empreiteiras.");
     }
     
     public Empreiteira getFieldData() {  

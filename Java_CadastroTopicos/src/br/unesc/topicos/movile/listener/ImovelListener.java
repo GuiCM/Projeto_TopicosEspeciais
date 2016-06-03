@@ -34,7 +34,7 @@ public class ImovelListener implements ActionListener {
                 
                 //Salva um log de cadastro
                 Persistencia persistencia = new Persistencia();
-                persistencia.salvarArquivo("Novo imóvel cadastrado.", Persistencia.logFile);
+                persistencia.salvarArquivoGeral("Novo imóvel cadastrado.");
                 
                 frame.dispose();
                 break;
