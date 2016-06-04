@@ -3,40 +3,81 @@ package br.unesc.topicos.movile.view;
 import br.unesc.topicos.movile.bean.Cliente;
 import br.unesc.topicos.movile.file.Persistencia;
 import br.unesc.topicos.movile.listener.ClienteListener;
+import javax.swing.JOptionPane;
 
-public class ClienteJIF extends javax.swing.JInternalFrame {    
+public class ClienteJIF extends javax.swing.JInternalFrame {
+
     private ClienteListener listener = new ClienteListener(this);
     private Cliente cliente = new Cliente();
     private Persistencia persistencia = new Persistencia();
-    
-    public ClienteJIF() {          
-        initComponents();    
-  
+
+    public ClienteJIF() {
+        initComponents();
+
         persistencia.salvarArquivoGeral("Usuário acessou tela de cadastro de cliente.");
     }
-    
+
+    public boolean isOnlyNum(String name) {
+        return name.matches("[0-9]+");
+    }
+
     public Cliente getFieldData() {
+
+        if (txtNome.getText().length() < 1) {
+            JOptionPane.showMessageDialog(this, "Campo Nome não pode estar vazio");
+            return null;
+        }
+        if (txtIdade.getText().length() > 1) {
+            if (!isOnlyNum(txtIdade.getText())) {
+                JOptionPane.showMessageDialog(this, "Campo Idade tem que ser número");
+                return null;
+            }
+        }
+
+        if (txtIdade.getText().length() < 1) {
+            cliente.setIdade(0);
+
+        } else {
+            cliente.setIdade(Integer.parseInt(txtIdade.getText()));
+
+        }
+
+        if (txtNumero.getText().length() > 1) {
+            if (!isOnlyNum(txtNumero.getText())) {
+                JOptionPane.showMessageDialog(this, "Campo Número tem que ser número");
+                return null;
+            }
+        }
+
+        if (txtNumero.getText().length() < 1) {
+
+            cliente.setNumero(0);
+
+        } else {
+            cliente.setNumero(Integer.parseInt(txtRua.getText()));
+        }
+
         char sexo = '\0';
-        
+
         if (cmbSexo.getSelectedItem().toString().equals("Masculino")) {
             sexo = 'M';
         } else {
             sexo = 'F';
         }
-        
+
         cliente.setNome(txtNome.getText());
-        cliente.setIdade(Integer.parseInt(txtIdade.getText()));
+
         cliente.setDataNascimento(mskDataNascimento.getText());
         cliente.setSexo(sexo);
         cliente.setCpf(mskCPF.getText());
         cliente.setRg(mskRG.getText());
         cliente.setRua(txtRua.getText());
-        cliente.setNumero(Integer.parseInt(txtNumero.getText()));
+
         cliente.setCep(txtCEP.getText());
         cliente.setCidade(txtCidade.getText());
         cliente.setEstado(txtEstado.getText());
         cliente.setBairro(txtBairro.getText());
-        
+
         return cliente;
     }
 

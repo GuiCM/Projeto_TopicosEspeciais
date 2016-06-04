@@ -28,7 +28,7 @@ public class MainJF extends javax.swing.JFrame {
         menuAjudaSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Movile 1.7");
+        setTitle("Movile 2.1");
         setLocation(new java.awt.Point(0, 0));
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setName("MainWindow"); // NOI18N

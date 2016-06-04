@@ -29,7 +29,8 @@ public class LoginJF extends javax.swing.JFrame {
     }
 
     public String getSenha() {
-        return this.txtUsuario.getText();
+     
+        return  String.valueOf(this.pswSenha.getPassword());
     }
 
     //   private LoginListener listener = new LoginListener(this, "", "");

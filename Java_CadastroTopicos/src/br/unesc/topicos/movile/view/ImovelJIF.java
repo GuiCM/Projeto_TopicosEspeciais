@@ -3,8 +3,10 @@ package br.unesc.topicos.movile.view;
 import br.unesc.topicos.movile.bean.Imovel;
 import br.unesc.topicos.movile.file.Persistencia;
 import br.unesc.topicos.movile.listener.ImovelListener;
+import javax.swing.JOptionPane;
 
-public class ImovelJIF extends javax.swing.JInternalFrame { 
+public class ImovelJIF extends javax.swing.JInternalFrame {
+
     private ImovelListener listener = new ImovelListener(this);
     private Imovel imovel = new Imovel();
 
@@ -15,16 +17,49 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
         persistencia.salvarArquivoGeral("Usuário acessou tela de cadastro de imóveis.");
 
     }
-    
-    public Imovel getFieldData() {       
+
+    public boolean isOnlyFloat(String name) {
+        return name.matches("[0-9]+[.][0-9]+");
+    }
+
+    public boolean isOnlyNum(String name) {
+        return name.matches("[0-9]+");
+    }
+
+    public Imovel getFieldData() {
+
+        if (txtRua.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Campo Rua não pode estar vazio");
+            return null;
+        }
+
+        if (txtNumero.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Campo Número não pode estar vazio");
+            return null;
+        }
+
+        if (!isOnlyNum(txtNumero.getText())) {
+
+            JOptionPane.showMessageDialog(this, "Campo Número apenas números, ou não pode estar vazio");
+            return null;
+        } else if (!isOnlyFloat(txtDimensoes.getText())) {
+
+            JOptionPane.showMessageDialog(this, "Campo Dimensões apenas números, ou não pode estar vazio. Formato #.#");
+            return null;
+        } else if (!isOnlyFloat(txtValor.getText())) {
+
+            JOptionPane.showMessageDialog(this, "Campo Valor apenas números, ou não pode estar vazio. Formato #.#");
+            return null;
+        }
+
         boolean result;
-       
-        if(cbIsAlugado.getSelectedItem().toString().equals("Sim")) {
+
+        if (cbIsAlugado.getSelectedItem().toString().equals("Sim")) {
             result = true;
         } else {
             result = false;
         }
-        
+
         imovel.setTipoImovel(cbTipoImovel.getSelectedItem().toString());
         imovel.setDimensoes(Float.parseFloat(txtDimensoes.getText()));
         imovel.setValor(Float.parseFloat(txtValor.getText()));
@@ -36,7 +71,7 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
         imovel.setCidade(txtCidade.getText());
         imovel.setEstado(txtEstado.getText());
         imovel.setBairro(txtBairro.getText());
-        
+
         return imovel;
     }
 

@@ -3,19 +3,38 @@ package br.unesc.topicos.movile.view;
 import br.unesc.topicos.movile.bean.Empreiteira;
 import br.unesc.topicos.movile.file.Persistencia;
 import br.unesc.topicos.movile.listener.EmpreiteiraListener;
+import javax.swing.JOptionPane;
 
 public class EmpreiteiraJIF extends javax.swing.JInternalFrame {
+
     private EmpreiteiraListener listener = new EmpreiteiraListener(this);
     private Empreiteira empreiteira = new Empreiteira();
-    
+
     public EmpreiteiraJIF() {
         initComponents();
-        
+
         Persistencia persistencia = new Persistencia();
         persistencia.salvarArquivoGeral("Usuário acessou tela de cadastro de empreiteiras.");
     }
-    
-    public Empreiteira getFieldData() {  
+
+    public boolean isOnlyNum(String name) {
+        return name.matches("[0-9]+");
+    }
+
+    public Empreiteira getFieldData() {
+
+        if (txtNome.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Campo Nome não pode estar vazio");
+            return null;
+        }
+
+        if (!isOnlyNum(txtNumero.getText())) {
+
+            empreiteira.setNumero(0);
+        } else {
+            empreiteira.setNumero(Integer.parseInt(txtRua.getText()));
+        }
+
         empreiteira.setNome(txtNome.getText());
         empreiteira.setProprietario(txtProprietario.getText());
         empreiteira.setCnpj(mskCNPJ.getText());
@@ -23,15 +42,14 @@ public class EmpreiteiraJIF extends javax.swing.JInternalFrame {
         empreiteira.setFax(txtFax.getText());
         empreiteira.setEmail(txtEmail.getText());
         empreiteira.setRua(txtRua.getText());
-        empreiteira.setNumero(Integer.parseInt(txtRua.getText()));
+
         empreiteira.setCep(txtCEP.getText());
         empreiteira.setCidade(txtCidade.getText());
         empreiteira.setEstado(txtEstado.getText());
         empreiteira.setBairro(txtBairro.getText());
-        
+
         return empreiteira;
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
