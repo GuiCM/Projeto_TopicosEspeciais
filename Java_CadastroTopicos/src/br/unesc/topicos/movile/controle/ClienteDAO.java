@@ -13,8 +13,23 @@ public class ClienteDAO {
         try {
 
             conn = Conexao.getConnection();
-            String sql = "insert into produtos (codigo, descricao) values(?,?)";
-            
+
+            String sql = "insert into Produtos ("
+                    + "nome,"
+                    + "idade,"
+                    + "dataNascimento,"
+                    + "char,"
+                    + "sexo,"
+                    + "cpf,"
+                    + "rg,"
+                    + "rua,"
+                    + "numero,"
+                    + "cep,"
+                    + "cidade,"
+                    + "estado,"
+                    + "bairro)"
+                    + " values(?,?,?,?,?,?,?,?,?,?,?,?)";
+
             ps = conn.prepareStatement(sql);
             ps.setString(1, cliente.getNome());
             ps.setInt(2, cliente.getIdade());
@@ -23,14 +38,12 @@ public class ClienteDAO {
             ps.setString(5, cliente.getCpf());
             ps.setString(6, cliente.getRg());
             ps.setString(7, cliente.getRua());
-            ps.setString(8, cliente.getRua());
-            ps.setInt(9, cliente.getNumero());
-            ps.setString(10, cliente.getCep());
-            ps.setString(11, cliente.getCidade());
-            ps.setString(12, cliente.getEstado());
-            ps.setString(13, cliente.getBairro());
-            
-            
+            ps.setInt(8, cliente.getNumero());
+            ps.setString(9, cliente.getCep());
+            ps.setString(10, cliente.getCidade());
+            ps.setString(11, cliente.getEstado());
+            ps.setString(12, cliente.getBairro());
+
             ps.execute();
 
             conn.commit();

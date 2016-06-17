@@ -20,8 +20,10 @@ public class ClienteListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        
         Cliente cliente = frame.getFieldData();
         ClienteDAO clienteDAO = new ClienteDAO();
+        
         switch (e.getActionCommand()) {
             case "Cancelar":
                 int result;

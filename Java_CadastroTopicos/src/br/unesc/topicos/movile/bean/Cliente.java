@@ -6,8 +6,7 @@ public class Cliente {
     private String dataNascimento;
     private char sexo;
     private String cpf;
-    private String rg;
-    
+    private String rg; 
     private String rua;
     private int numero;
     private String cep;
