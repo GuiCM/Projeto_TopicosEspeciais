@@ -121,7 +121,7 @@ public class ClienteDAO {
     }
 
     public List<Cliente> getAll() {
-        List<Cliente> lista = new ArrayList<Cliente>();
+        List<Cliente> lista = new ArrayList<>();
         Connection conn = null;
         PreparedStatement ps = null;
         try {
