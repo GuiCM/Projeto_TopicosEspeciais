@@ -1,6 +1,7 @@
 package br.unesc.topicos.movile.listener;
 
 import br.unesc.topicos.movile.bean.Cliente;
+import br.unesc.topicos.movile.controle.ClienteDAO;
 import br.unesc.topicos.movile.file.Persistencia;
 import br.unesc.topicos.movile.view.ClienteJIF;
 import java.awt.event.ActionEvent;
@@ -19,6 +20,8 @@ public class ClienteListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        Cliente cliente = frame.getFieldData();
+        ClienteDAO clienteDAO = new ClienteDAO();
         switch (e.getActionCommand()) {
             case "Cancelar":
                 int result;
@@ -33,12 +36,12 @@ public class ClienteListener implements ActionListener {
                 break;
             case "Salvar":
 
-                Cliente cliente = frame.getFieldData();
+                clienteDAO.insert(cliente);
 
                 if (cliente == null) {
                     return;
                 }
-                
+
                 //Salva um log de cadastro
                 Persistencia persistencia = new Persistencia();
 
@@ -47,6 +50,8 @@ public class ClienteListener implements ActionListener {
                 frame.dispose();
                 break;
             case "Excluir":
+
+                clienteDAO.delete(cliente);
                 break;
         }
     }
