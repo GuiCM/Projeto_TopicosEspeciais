@@ -3,7 +3,10 @@ package br.unesc.topicos.movile.controle;
 import br.unesc.topicos.movile.bean.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClienteDAO {
 
@@ -14,7 +17,7 @@ public class ClienteDAO {
 
             conn = Conexao.getConnection();
 
-            String sql = "insert into Produtos ("
+            String sql = "insert into Cliente ("
                     + "nome,"
                     + "idade,"
                     + "dataNascimento,"
@@ -75,6 +78,174 @@ public class ClienteDAO {
                 }
             }
         }
+    }
+
+    public void delete(Cliente cliente) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = Conexao.getConnection();
+            String sql = "delete from Cliente where codigo = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, cliente.getCodigo());
+            ps.execute();
+
+            conn.commit();
+        } catch (SQLException e) {
+            System.out.println("ERRO: " + e.getMessage());
+
+            if (conn != null) {
+                try {
+                    conn.rollback();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+        }
+    }
+
+    public List<Cliente> getAll() {
+        List<Cliente> lista = new ArrayList<Cliente>();
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = Conexao.getConnection();
+            String sql = "select codigo, descricao from produtos";
+            ps = conn.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Integer codigo = rs.getInt("codigo");
+                String nome = rs.getString("nome");
+                Integer idade = rs.getInt("idade");
+                String dataNascimento = rs.getString("dataNascimento");
+                Character sexo = rs.getString("sexo").toCharArray()[0];
+                String cpf = rs.getString("cpf");
+                String rg = rs.getString("rg");
+                String rua = rs.getString("rua");
+                Integer numero = rs.getInt("numero");
+                String cep = rs.getString("cep");
+                String cidade = rs.getString("cidade");
+                String estado = rs.getString("estado");
+                String bairro = rs.getString("bairro");
+
+                Cliente cliente = new Cliente();
+                cliente.setCodigo(codigo);
+                cliente.setNome(nome);
+                cliente.setIdade(idade);
+                cliente.setDataNascimento(dataNascimento);
+                cliente.setSexo(sexo);
+                cliente.setCpf(cpf);
+                cliente.setRg(rg);
+                cliente.setRua(rua);
+                cliente.setNumero(numero);
+                cliente.setCep(cep);
+                cliente.setCidade(cidade);
+                cliente.setEstado(estado);
+                cliente.setBairro(bairro);
+
+                lista.add(cliente);
+            }
+        } catch (SQLException e) {
+            System.out.println("ERRO: " + e.getMessage());
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+        }
+        return lista;
+    }
+
+    public Cliente getCliente(Integer codbusca) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = Conexao.getConnection();
+            String sql = "select codigo, descricao from produtos where codigo = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, codbusca);
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+
+                Integer codigo = rs.getInt("codigo");
+                String nome = rs.getString("nome");
+                Integer idade = rs.getInt("idade");
+                String dataNascimento = rs.getString("dataNascimento");
+                Character sexo = rs.getString("sexo").toCharArray()[0];
+                String cpf = rs.getString("cpf");
+                String rg = rs.getString("rg");
+                String rua = rs.getString("rua");
+                Integer numero = rs.getInt("numero");
+                String cep = rs.getString("cep");
+                String cidade = rs.getString("cidade");
+                String estado = rs.getString("estado");
+                String bairro = rs.getString("bairro");
+
+                Cliente cliente = new Cliente();
+                cliente.setCodigo(codigo);
+                cliente.setNome(nome);
+                cliente.setIdade(idade);
+                cliente.setDataNascimento(dataNascimento);
+                cliente.setSexo(sexo);
+                cliente.setCpf(cpf);
+                cliente.setRg(rg);
+                cliente.setRua(rua);
+                cliente.setNumero(numero);
+                cliente.setCep(cep);
+                cliente.setCidade(cidade);
+                cliente.setEstado(estado);
+                cliente.setBairro(bairro);
+
+                return cliente;
+            }
+        } catch (SQLException e) {
+            System.out.println("ERRO: " + e.getMessage());
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+        }
+        return null;
     }
 
 }
