@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.unesc.topicos.movile.controle;
 
-import br.unesc.topicos.movile.bean.Imovel;
+import br.unesc.topicos.movile.bean.Login;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,46 +8,32 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 /**
  *
  * @author fabricio
  */
+public class LoginDAO {
 
-public class ImovelDAO {
-
-    public void insert(Imovel imovel) {
+    public void insert(Login login) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
 
             conn = Conexao.getConnection();
 
-            String sql = "insert into Imovel ("
-                    + "tipoImovel,"//1
-                    + "dimensoes,"//2
-                    + "valor,"//3
-                    + "tipoMaterial,"//4
-                    + "alugado,"//5
-                    + "rua,"//6
-                    + "numero,"//7
-                    + "cep,"//8
-                    + "cidade,"//9
-                    + "estado,"//10
-                    + "bairro)"//11
-                    + " values(?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into Login ("
+                    + "usuario,"//1
+                    + "senha,"//2        
+                    + " values(?,?)";
 
             ps = conn.prepareStatement(sql);
-            ps.setString(1, imovel.getTipoImovel());
-            ps.setFloat(2, imovel.getDimensoes());
-            ps.setFloat(3, imovel.getValor());
-            ps.setString(4, imovel.getTipoMaterial());
-            ps.setBoolean(5, imovel.getAlugado());
-            ps.setString(6, imovel.getRua());
-            ps.setInt(7, imovel.getNumero());
-            ps.setString(8, imovel.getCep());
-            ps.setString(9, imovel.getCidade());
-            ps.setString(10, imovel.getEstado());
-            ps.setString(11, imovel.getBairro());
+            ps.setString(1, login.getUsuario());
+            ps.setString(2, login.getSenha());
 
             ps.execute();
 
@@ -87,14 +68,14 @@ public class ImovelDAO {
         }
     }
 
-    public void delete(Imovel imovel) {
+    public void delete(Login login) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "delete from Imovel where codigo = ?";
+            String sql = "delete from Login where codigo = ?";
             ps = conn.prepareStatement(sql);
-            ps.setInt(1, imovel.getCodigo());
+            ps.setInt(1, login.getCodigo());
             ps.execute();
 
             conn.commit();
@@ -127,44 +108,26 @@ public class ImovelDAO {
         }
     }
 
-    public List<Imovel> getAll() {
-        List<Imovel> lista = new ArrayList<>();
+    public List<Login> getAll() {
+        List<Login> lista = new ArrayList<>();
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "select codigo, descricao from Imovel";
+            String sql = "select codigo, descricao from Login";
             ps = conn.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
-                String tipoImovel = rs.getString("tipoImovel");
-                float dimensoes = rs.getFloat("dimensoes");
-                float valor = rs.getFloat("valor");
-                String tipoMaterial = rs.getString("tipoMaterial");
-                boolean alugado = rs.getBoolean("alugado");
-                String rua = rs.getString("rua");
-                int numero = rs.getInt("numero");
-                String cep = rs.getString("cep");
-                String cidade = rs.getString("cidade");
-                String estado = rs.getString("estado");
-                String bairro = rs.getString("bairro");
+                String usuario = rs.getString("usuario");
+                String senha = rs.getString("senha");
 
-                Imovel imovel = new Imovel();
-                imovel.setTipoImovel(tipoImovel);
-                imovel.setDimensoes(dimensoes);
-                imovel.setValor(valor);
-                imovel.setTipoMaterial(tipoMaterial);
-                imovel.setAlugado(alugado);
-                imovel.setRua(rua);
-                imovel.setNumero(numero);
-                imovel.setCep(cep);
-                imovel.setCidade(cidade);
-                imovel.setEstado(estado);
-                imovel.setBairro(bairro);
+                Login login = new Login();
+                login.setUsuario(usuario);
+                login.setSenha(senha);
 
-                lista.add(imovel);
+                lista.add(login);
             }
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
@@ -187,44 +150,26 @@ public class ImovelDAO {
         return lista;
     }
 
-    public Imovel getImovel(Integer codbusca) {
+    public Login getLogin(Integer codbusca) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "select codigo, descricao from Imovel where codigo = ?";
+            String sql = "select codigo, descricao from Login where codigo = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, codbusca);
 
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
 
-                String tipoImovel = rs.getString("tipoImovel");
-                float dimensoes = rs.getFloat("dimensoes");
-                float valor = rs.getFloat("valor");
-                String tipoMaterial = rs.getString("tipoMaterial");
-                boolean alugado = rs.getBoolean("alugado");
-                String rua = rs.getString("rua");
-                int numero = rs.getInt("numero");
-                String cep = rs.getString("cep");
-                String cidade = rs.getString("cidade");
-                String estado = rs.getString("estado");
-                String bairro = rs.getString("bairro");
+                String usuario = rs.getString("usuario");
+                String senha = rs.getString("senha");
 
-                Imovel imovel = new Imovel();
-                imovel.setTipoImovel(tipoImovel);
-                imovel.setDimensoes(dimensoes);
-                imovel.setValor(valor);
-                imovel.setTipoMaterial(tipoMaterial);
-                imovel.setAlugado(alugado);
-                imovel.setRua(rua);
-                imovel.setNumero(numero);
-                imovel.setCep(cep);
-                imovel.setCidade(cidade);
-                imovel.setEstado(estado);
-                imovel.setBairro(bairro);
+                Login login = new Login();
+                login.setUsuario(usuario);
+                login.setSenha(senha);
 
-                return imovel;
+                return login;
             }
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
@@ -247,39 +192,21 @@ public class ImovelDAO {
         return null;
     }
 
-    public void update(Imovel imovel) {
+    public void update(Login login) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
 
-            String sql = "update Imovel set "
-                    + "tipoImovel = ?,"//1
-                    + "dimensoes = ?,"//2
-                    + "valor = ?,"//3
-                    + "tipoMaterial = ?,"//4
-                    + "alugado = ?,"//5
-                    + "rua = ?,"//6
-                    + "numero = ?,"//7
-                    + "cep = ?,"//8
-                    + "cidade = ?,"//9
-                    + "estado = ?,"//10
-                    + "bairro = ?)"//11
+            String sql = "update Login set "
+                    + "usuario = ?,"//1
+                    + "senha = ?,"//2            
                     + "where codigo = ?";
 
             ps = conn.prepareStatement(sql);
 
-            ps.setString(1, imovel.getTipoImovel());
-            ps.setFloat(2, imovel.getDimensoes());
-            ps.setFloat(3, imovel.getValor());
-            ps.setString(4, imovel.getTipoMaterial());
-            ps.setBoolean(5, imovel.getAlugado());
-            ps.setString(6, imovel.getRua());
-            ps.setInt(7, imovel.getNumero());
-            ps.setString(8, imovel.getCep());
-            ps.setString(9, imovel.getCidade());
-            ps.setString(10, imovel.getEstado());
-            ps.setString(11, imovel.getBairro());
+            ps.setString(1, login.getUsuario());
+            ps.setString(2, login.getSenha());
 
             ps.execute();
 
@@ -312,5 +239,4 @@ public class ImovelDAO {
             }
         }
     }
-
 }

@@ -126,7 +126,7 @@ public class ClienteDAO {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "select codigo, descricao from produtos";
+            String sql = "select codigo, descricao from Cliente";
             ps = conn.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
@@ -189,7 +189,7 @@ public class ClienteDAO {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "select codigo, descricao from produtos where codigo = ?";
+            String sql = "select codigo, descricao from Cliente where codigo = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, codbusca);
 
@@ -254,7 +254,7 @@ public class ClienteDAO {
         try {
             conn = Conexao.getConnection();
             
-            String sql = "update produtos set "
+            String sql = "update Cliente set "
                     + "nome = ?,"
                     + "idade = ?,"
                     + "dataNascimento = ?,"

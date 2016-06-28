@@ -20,10 +20,10 @@ public class ClienteListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+
         Cliente cliente = frame.getFieldData();
         ClienteDAO clienteDAO = new ClienteDAO();
-        
+
         switch (e.getActionCommand()) {
             case "Cancelar":
                 int result;
@@ -38,12 +38,11 @@ public class ClienteListener implements ActionListener {
                 break;
             case "Salvar":
 
-                clienteDAO.insert(cliente);
-
                 if (cliente == null) {
                     return;
                 }
-
+                
+                clienteDAO.insert(cliente);
                 //Salva um log de cadastro
                 Persistencia persistencia = new Persistencia();
 

@@ -5,14 +5,18 @@
  */
 package br.unesc.topicos.movile.start;
 
+import br.unesc.topicos.movile.bean.Login;
 import br.unesc.topicos.movile.file.Persistencia;
 import br.unesc.topicos.movile.listener.LoginListener;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author comp1
  */
 public class LoginJF extends javax.swing.JFrame {
+
+    private Login login = new Login();
 
     public LoginJF() {
         initComponents();
@@ -24,13 +28,39 @@ public class LoginJF extends javax.swing.JFrame {
 
     private LoginListener listener = new LoginListener(this);
 
-    public String getUsuario() {
-        return this.txtUsuario.getText();
+    public boolean isAlpha(String name) {
+
+        return name.matches("[a-zA-Z-0-9]+");
     }
 
-    public String getSenha() {
-     
-        return  String.valueOf(this.pswSenha.getPassword());
+    public boolean isOnlyNum(String name) {
+        return name.matches("[0-9]+");
+    }
+
+    public Login getFieldData() {
+
+        String usuario = this.txtUsuario.getText();
+        String senha = String.valueOf(this.pswSenha.getPassword());
+        login.setUsuario(usuario);
+        login.setSenha(senha);
+
+        if (usuario.equals("") || senha.equals("")) {
+            JOptionPane.showMessageDialog(this, "Preencha seu usuário e senha.");
+            return null;
+        }
+        //Evita o login começar com número
+        if (isOnlyNum(usuario.substring(0, 1))) {
+            JOptionPane.showMessageDialog(this, "Login não pode começar com número");
+            return null;
+        }
+
+        //Não permite símbolos no login
+        if (!isAlpha(usuario)) {
+            JOptionPane.showMessageDialog(this, "Login tem que ser alfanúmerico");
+            return null;
+        }
+
+        return login;
     }
 
     //   private LoginListener listener = new LoginListener(this, "", "");

@@ -2,20 +2,28 @@ package br.unesc.topicos.movile.bean;
 
 public class Imovel {
 
-    private String  tipoImovel;
-    private float   dimensoes;
-    private float   valor;
-    private String  tipoMaterial;
+    private int codigo;
+
+    private String tipoImovel;
+    private float dimensoes;
+    private float valor;
+    private String tipoMaterial;
     private boolean alugado;
 
-    private String  rua;
-    private int     numero;
-    private String  cep;
-    private String  cidade;
-    private String  estado;
-    private String  bairro;   
+    private String rua;
+    private int numero;
+    private String cep;
+    private String cidade;
+    private String estado;
+    private String bairro;
 
-    /******* GET'S *******/
+    /**
+     * ***** GET'S ******
+     */
+      public int getCodigo() {
+        return this.codigo;
+    }
+    
     public String getTipoImovel() {
         return this.tipoImovel;
     }
@@ -35,7 +43,7 @@ public class Imovel {
     public boolean getAlugado() {
         return this.alugado;
     }
-    
+
     public String getRua() {
         return this.rua;
     }
@@ -60,8 +68,13 @@ public class Imovel {
         return this.bairro;
     }
 
+    /**
+     * ***** SET'S ******
+     */
+     public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
     
-    /******* SET'S *******/
     public void setTipoImovel(String tipoImovel) {
         this.tipoImovel = tipoImovel;
     }
@@ -81,7 +94,7 @@ public class Imovel {
     public void setAlugado(boolean alugado) {
         this.alugado = alugado;
     }
-    
+
     public void setRua(String rua) {
         this.rua = rua;
     }

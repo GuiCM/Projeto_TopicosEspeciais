@@ -2,6 +2,7 @@ package br.unesc.topicos.movile.listener;
 
 import br.unesc.topicos.movile.view.ImovelJIF;
 import br.unesc.topicos.movile.bean.Imovel;
+import br.unesc.topicos.movile.controle.ImovelDAO;
 import br.unesc.topicos.movile.file.Persistencia;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +20,10 @@ public class ImovelListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        
+        Imovel imovel = frame.getFieldData();
+        ImovelDAO imovelDAO = new ImovelDAO();
+        
         switch (e.getActionCommand()) {
             case "Cancelar":
                 int result;
@@ -35,14 +40,18 @@ public class ImovelListener implements ActionListener {
                 //Salva um log de cadastro
                 Persistencia persistencia = new Persistencia();
 
-                Imovel imovel = frame.getFieldData();
-
                 if (imovel == null) {
                     return;
                 }
+
+                imovelDAO.insert(imovel);
                 persistencia.salvarArquivoGeral("Novo imóvel cadastrado.");
 
                 frame.dispose();
+                break;
+
+            case "Excluir":
+                imovelDAO.delete(imovel);
                 break;
         }
     }
