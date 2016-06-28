@@ -25,7 +25,7 @@ public class LoginListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Login login = frame.getFieldData();
+        Login login = null;
         LoginDAO loginDAO = new LoginDAO();
 
         switch (e.getActionCommand()) {
@@ -38,6 +38,11 @@ public class LoginListener implements ActionListener {
                 }
                 break;
             case "Entrar":
+                login = frame.getDadosCampos();
+
+                if (login == null) {
+                    return;
+                }
 
                 for (Login l : loginDAO.getAll()) {
                     if (login.getUsuario().equals(l.getUsuario())
@@ -58,6 +63,17 @@ public class LoginListener implements ActionListener {
 
                 JOptionPane.showMessageDialog(frame, "Seu usuário e senha estão incorretos, "
                         + "ou este usuário não existe no sistema!");
+                break;
+
+            case "Registrar":
+
+                login = frame.getDadosCamposRegistrar();
+
+                if (login == null) {
+                    return;
+                }
+
+                loginDAO.insert(login);
                 break;
 
         }
