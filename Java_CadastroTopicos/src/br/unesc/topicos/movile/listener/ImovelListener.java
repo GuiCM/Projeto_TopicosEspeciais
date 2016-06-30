@@ -20,10 +20,11 @@ public class ImovelListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-        Imovel imovel = frame.getFieldData();
+
+        Imovel imovel = null;
         ImovelDAO imovelDAO = new ImovelDAO();
-        
+        Persistencia persistencia = new Persistencia();
+
         switch (e.getActionCommand()) {
             case "Cancelar":
                 int result;
@@ -36,9 +37,8 @@ public class ImovelListener implements ActionListener {
                 }
                 break;
             case "Salvar":
-
+                imovel = frame.getDadosCampos();
                 //Salva um log de cadastro
-                Persistencia persistencia = new Persistencia();
 
                 if (imovel == null) {
                     return;
@@ -51,7 +51,27 @@ public class ImovelListener implements ActionListener {
                 break;
 
             case "Excluir":
+                //TODO: habilitar apenas quando tem registro na tela
+                imovel = frame.getDadosCampos();
+
+                if (imovel == null) {
+                    return;
+                }
                 imovelDAO.delete(imovel);
+
+                persistencia.salvarArquivoGeral("Cadastro de imóvel do endereço "
+                        + imovel.getRua() + ", "
+                        + Integer.toString(imovel.getNumero()) + " removido.");
+                break;
+
+            case "Buscar":
+                System.out.println("buscar");
+                break;
+            case "<":
+                System.out.println("ant");
+                break;
+            case ">":
+                System.out.println("prox");
                 break;
         }
     }

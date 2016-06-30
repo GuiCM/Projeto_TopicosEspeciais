@@ -113,9 +113,10 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
         cbTipoImovel = new javax.swing.JComboBox<>();
         cbTipoMaterial = new javax.swing.JComboBox<>();
         cbIsAlugado = new javax.swing.JComboBox<>();
-        jTextField2 = new javax.swing.JTextField();
-        registroAnterior1 = new javax.swing.JButton();
-        proximoRegistro1 = new javax.swing.JButton();
+        proximoRegistroBtn = new javax.swing.JButton();
+        registroAnteriorBtn = new javax.swing.JButton();
+        buscarRegistroBtn = new javax.swing.JButton();
+        txtBuscaRegistro = new javax.swing.JTextField();
 
         setClosable(true);
         setMaximizable(true);
@@ -185,7 +186,7 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
                         .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(182, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,11 +281,16 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        proximoRegistroBtn.setText(">");
+        proximoRegistroBtn.addActionListener(listener);
 
-        registroAnterior1.setText("<");
+        registroAnteriorBtn.setText("<");
+        registroAnteriorBtn.addActionListener(listener);
 
-        proximoRegistro1.setText(">");
+        buscarRegistroBtn.setText("Buscar");
+        buscarRegistroBtn.addActionListener(listener);
+
+        txtBuscaRegistro.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -302,11 +308,13 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
                                 .addGap(268, 268, 268))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtBuscaRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(registroAnterior1)
+                                .addComponent(buscarRegistroBtn)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(proximoRegistro1)
+                                .addComponent(registroAnteriorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(proximoRegistroBtn)
                                 .addContainerGap())))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,9 +336,10 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
                     .addComponent(jLabel13)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(registroAnterior1)
-                            .addComponent(proximoRegistro1)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(registroAnteriorBtn)
+                            .addComponent(proximoRegistroBtn)
+                            .addComponent(txtBuscaRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buscarRegistroBtn))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -342,7 +351,7 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
                     .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -353,6 +362,7 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JButton buscarRegistroBtn;
     private javax.swing.JComboBox<String> cbIsAlugado;
     private javax.swing.JComboBox<String> cbTipoImovel;
     private javax.swing.JComboBox<String> cbTipoMaterial;
@@ -371,10 +381,10 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JButton proximoRegistro1;
-    private javax.swing.JButton registroAnterior1;
+    private javax.swing.JButton proximoRegistroBtn;
+    private javax.swing.JButton registroAnteriorBtn;
     private javax.swing.JTextField txtBairro;
+    private javax.swing.JTextField txtBuscaRegistro;
     private javax.swing.JTextField txtCEP;
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtDimensoes;

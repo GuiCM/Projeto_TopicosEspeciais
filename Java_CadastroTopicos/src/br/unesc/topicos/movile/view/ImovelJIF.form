@@ -47,11 +47,13 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jTextField2" min="-2" pref="170" max="-2" attributes="0"/>
+                              <Component id="txtBuscaRegistro" min="-2" pref="170" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="registroAnterior1" min="-2" max="-2" attributes="0"/>
+                              <Component id="buscarRegistroBtn" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="proximoRegistro1" min="-2" max="-2" attributes="0"/>
+                              <Component id="registroAnteriorBtn" min="-2" pref="41" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="proximoRegistroBtn" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -82,9 +84,10 @@
                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="registroAnterior1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="proximoRegistro1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="registroAnteriorBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="proximoRegistroBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtBuscaRegistro" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="buscarRegistroBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -100,7 +103,7 @@
                   <Component id="btnSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="16" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -201,7 +204,7 @@
                       <Component id="txtCidade" alignment="0" min="-2" pref="317" max="-2" attributes="0"/>
                       <Component id="txtBairro" alignment="0" min="-2" pref="317" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="182" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -422,19 +425,33 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class="javax.swing.JButton" name="proximoRegistroBtn">
       <Properties>
-        <Property name="horizontalAlignment" type="int" value="4"/>
+        <Property name="text" type="java.lang.String" value="&gt;"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="proximoRegistroBtn.addActionListener(listener);"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="registroAnterior1">
+    <Component class="javax.swing.JButton" name="registroAnteriorBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="registroAnteriorBtn.addActionListener(listener);"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="proximoRegistro1">
+    <Component class="javax.swing.JButton" name="buscarRegistroBtn">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&gt;"/>
+        <Property name="text" type="java.lang.String" value="Buscar"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="buscarRegistroBtn.addActionListener(listener);"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtBuscaRegistro">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="4"/>
       </Properties>
     </Component>
   </SubComponents>

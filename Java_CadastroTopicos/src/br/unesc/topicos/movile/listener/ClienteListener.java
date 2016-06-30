@@ -21,8 +21,9 @@ public class ClienteListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        Cliente cliente = frame.getFieldData();
+        Cliente cliente = null;
         ClienteDAO clienteDAO = new ClienteDAO();
+        Persistencia persistencia = new Persistencia();
 
         switch (e.getActionCommand()) {
             case "Cancelar":
@@ -37,22 +38,41 @@ public class ClienteListener implements ActionListener {
                 }
                 break;
             case "Salvar":
+                cliente = frame.getDadosCampos();
 
                 if (cliente == null) {
                     return;
                 }
-                
+
                 clienteDAO.insert(cliente);
                 //Salva um log de cadastro
-                Persistencia persistencia = new Persistencia();
 
                 persistencia.salvarArquivoGeral("Novo cliente cadastrado.");
 
                 frame.dispose();
                 break;
             case "Excluir":
+                //TODO: habilitar apenas quando tem registro na tela
 
+                cliente = frame.getDadosCampos();
+              
+                if (cliente == null) {
+                    return;
+                }
+                
                 clienteDAO.delete(cliente);
+
+                 persistencia.salvarArquivoGeral("Cadastro de cliente " + cliente.getNome()+  " removido.");
+                break;
+
+            case "Buscar":
+                System.out.println("buscar");
+                break;
+            case "<":
+                System.out.println("ant");
+                break;
+            case ">":
+                System.out.println("prox");
                 break;
         }
     }

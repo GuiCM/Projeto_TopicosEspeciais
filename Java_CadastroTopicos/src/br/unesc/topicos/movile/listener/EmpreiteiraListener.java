@@ -21,8 +21,9 @@ public class EmpreiteiraListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        Empreiteira empreiteira = frame.getFieldData();
+        Empreiteira empreiteira = null;
         EmpreiteiraDAO empreiteiraDAO = new EmpreiteiraDAO();
+        Persistencia persistencia = new Persistencia();
 
         switch (e.getActionCommand()) {
             case "Cancelar":
@@ -37,22 +38,38 @@ public class EmpreiteiraListener implements ActionListener {
                 }
                 break;
             case "Salvar":
+                empreiteira = frame.getDadosCampos();
 
                 if (empreiteira == null) {
                     return;
                 }
-                
+
                 empreiteiraDAO.insert(empreiteira);
-                
-                //Salva um log de cadastro
-                Persistencia persistencia = new Persistencia();
 
                 persistencia.salvarArquivoGeral("Nova empreiteira cadastrada.");
 
                 frame.dispose();
                 break;
             case "Excluir":
+                //TODO: habilitar apenas quando tem registro na tela
+                empreiteira = frame.getDadosCampos();
+
+                if (empreiteira == null) {
+                    return;
+                }
+
                 empreiteiraDAO.delete(empreiteira);
+                persistencia.salvarArquivoGeral("Cadastro de empreiteira " + empreiteira.getNome() + " removido.");
+                break;
+
+            case "Buscar":
+                System.out.println("buscar");
+                break;
+            case "<":
+                System.out.println("ant");
+                break;
+            case ">":
+                System.out.println("prox");
                 break;
         }
     }
