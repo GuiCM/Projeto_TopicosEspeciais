@@ -54,10 +54,10 @@ public class LoginListener implements ActionListener {
                         frame.dispose();
 
                         Persistencia persistencia = new Persistencia();
-                        persistencia.salvarArquivoGeral("Novo login no sistema, ID: " + this.usuarioCampo);
-                        persistencia.salvarArquivoDadosLogin(this.usuarioCampo);
+                        persistencia.salvarArquivoGeral("Novo login no sistema, ID: " + login.getUsuario());
+                        persistencia.salvarArquivoDadosLogin(login.getUsuario());
 
-                        break;
+                       return;
                     }
 
                 }
@@ -73,6 +73,7 @@ public class LoginListener implements ActionListener {
                 }              
 
                 loginDAO.insert(login);
+                  JOptionPane.showMessageDialog(frame, "Usuário cadastrado com sucesso!");
                 break;
 
         }

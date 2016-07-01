@@ -129,8 +129,6 @@ public class EmpreiteiraJIF extends javax.swing.JInternalFrame {
         btnNovo = new javax.swing.JButton();
 
         setClosable(true);
-        setMaximizable(true);
-        setResizable(true);
         setTitle("Adicionar");
         setMinimumSize(new java.awt.Dimension(795, 550));
         setPreferredSize(new java.awt.Dimension(795, 550));
@@ -391,11 +389,25 @@ public class EmpreiteiraJIF extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        if (btnNovo.getText().equals("Novo")) {
+          if (btnNovo.getText().equals("Novo")) {
             limparDadosCampos();
             btnNovo.setText("Salvar");
-        } else
+            btnExcluir.setEnabled(false);
+            proximoRegistroBtn.setEnabled(false);
+            registroAnteriorBtn.setEnabled(false);
+            btnSalvar.setEnabled(false);
+            buscarRegistroBtn.setEnabled(false);
+            txtBuscaRegistro.setEnabled(false);
+        } else if (btnNovo.getText().equals("Salvar")) {
             btnNovo.setText("Novo");
+            btnExcluir.setEnabled(true);
+            proximoRegistroBtn.setEnabled(true);
+            registroAnteriorBtn.setEnabled(true);
+            btnSalvar.setEnabled(true);
+            buscarRegistroBtn.setEnabled(true);
+            txtBuscaRegistro.setEnabled(true);
+
+        }
     }//GEN-LAST:event_btnNovoActionPerformed
 
 

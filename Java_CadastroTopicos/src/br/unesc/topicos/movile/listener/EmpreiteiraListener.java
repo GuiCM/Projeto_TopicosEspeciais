@@ -10,8 +10,9 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 public class EmpreiteiraListener implements ActionListener {
+
     private EmpreiteiraJIF frame;
-    private EmpreiteiraDAO empreiteiraDAO = new EmpreiteiraDAO();  
+    private EmpreiteiraDAO empreiteiraDAO = new EmpreiteiraDAO();
     private List<Empreiteira> lista; //Receber a lista de empreiteiras do banco
     private int posRegistro; //Posicao do registro
 
@@ -21,18 +22,18 @@ public class EmpreiteiraListener implements ActionListener {
 
     //Carregar todos os dados quando a janela é aberta
     public void load() {
-       posRegistro = 0;
-       lista = empreiteiraDAO.getAll();
-       preencherCampos(lista, posRegistro); 
+        posRegistro = 0;
+        lista = empreiteiraDAO.getAll();
+        preencherCampos(lista, posRegistro);
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        Empreiteira empreiteira = null;       
+        Empreiteira empreiteira = null;
         Persistencia persistencia = new Persistencia();
 
-        switch (e.getActionCommand()) {    
-            case "Novo":              
+        switch (e.getActionCommand()) {
+            case "Novo":
                 break;
             case "Salvar":
                 empreiteira = frame.getDadosCampos();
@@ -47,8 +48,9 @@ public class EmpreiteiraListener implements ActionListener {
                 empreiteira = frame.getDadosCampos();
                 empreiteira.setCodigo(codigo);
 
-                if (empreiteira.getNome().length() == 0)
-                    return;             
+                if (empreiteira.getNome().length() == 0) {
+                    return;
+                }
 
                 empreiteiraDAO.update(empreiteira);
                 persistencia.salvarArquivoGeral("Nova empreiteira cadastrada.");
@@ -58,39 +60,45 @@ public class EmpreiteiraListener implements ActionListener {
                 //TODO: habilitar apenas quando tem registro na tela
                 empreiteira = lista.get(posRegistro);
 
-                if (empreiteira.getNome().length() == 0)
+                if (empreiteira.getNome().length() == 0) {
                     return;
+                }
 
                 empreiteiraDAO.delete(empreiteira);
                 persistencia.salvarArquivoGeral("Cadastro de empreiteira: " + empreiteira.getNome() + " removido.");
-                load();  
+                load();
                 break;
             case "Buscar":
                 String textoBusca = frame.getDadosBusca();
-                if (textoBusca.length() > 0)
+                if (textoBusca.length() > 0) {
                     lista = empreiteiraDAO.getAll(textoBusca);
-                else
+                } else {
                     lista = empreiteiraDAO.getAll();
-                
+                }
+
                 posRegistro = 0;
                 preencherCampos(lista, posRegistro);
                 break;
             case "<":
                 posRegistro--;
-                if (posRegistro < 0)
+                if (posRegistro < 0) {
                     posRegistro = lista.size() - 1;
+                }
                 preencherCampos(lista, posRegistro);
                 break;
             case ">":
                 posRegistro++;
-                if (posRegistro >= lista.size())
+                if (posRegistro >= lista.size()) {
                     posRegistro = 0;
+                }
                 preencherCampos(lista, posRegistro);
                 break;
         }
     }
-    
+
     private void preencherCampos(List<Empreiteira> lista, int pos) {
-        frame.setDadosCampos(lista.get(pos));
+        if (lista.size() > 0) {
+            frame.setDadosCampos(lista.get(pos));
+        }
     }
 }

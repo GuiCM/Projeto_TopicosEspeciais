@@ -93,6 +93,7 @@ public class ClienteListener implements ActionListener {
     }
     
     private void preencherCampos(List<Cliente> lista, int pos) {
+        if (lista.size() > 0)
             frame.setDadosCampos(lista.get(pos));
     }
 

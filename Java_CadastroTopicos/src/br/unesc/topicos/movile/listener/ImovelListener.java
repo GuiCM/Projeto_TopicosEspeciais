@@ -1,4 +1,5 @@
 package br.unesc.topicos.movile.listener;
+
 import br.unesc.topicos.movile.view.ImovelJIF;
 import br.unesc.topicos.movile.bean.Imovel;
 import br.unesc.topicos.movile.controle.ImovelDAO;
@@ -9,29 +10,30 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 public class ImovelListener implements ActionListener {
+
     private ImovelJIF frame;
-    private ImovelDAO imovelDAO = new ImovelDAO();  
+    private ImovelDAO imovelDAO = new ImovelDAO();
     private List<Imovel> lista; //Receber a lista de imoveis do banco
     private int posRegistro; //Posicao do registro
 
     public ImovelListener(ImovelJIF frame) {
         this.frame = frame;
     }
-    
+
     //Carregar todos os dados quando a janela é aberta
     public void load() {
-       posRegistro = 0;
-       lista = imovelDAO.getAll();
-       preencherCampos(lista, posRegistro); 
+        posRegistro = 0;
+        lista = imovelDAO.getAll();
+        preencherCampos(lista, posRegistro);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Imovel imovel = null;       
+        Imovel imovel = null;
         Persistencia persistencia = new Persistencia();
 
         switch (e.getActionCommand()) {
-            case "Novo":              
+            case "Novo":
                 break;
             case "Salvar":
                 imovel = frame.getDadosCampos();
@@ -46,10 +48,11 @@ public class ImovelListener implements ActionListener {
                 imovel = frame.getDadosCampos();
                 imovel.setCodigo(codigo);
                 System.out.println(posRegistro);
-                
-                if (imovel.getRua().length() == 0) 
+
+                if (imovel.getRua().length() == 0) {
                     return;
-                
+                }
+
                 imovelDAO.update(imovel);
                 persistencia.salvarArquivoGeral("Novo imóvel cadastrado.");
                 load();
@@ -69,30 +72,35 @@ public class ImovelListener implements ActionListener {
                 break;
             case "Buscar":
                 String textoBusca = frame.getDadosBusca();
-                if (textoBusca.length() > 0) 
+                if (textoBusca.length() > 0) {
                     lista = imovelDAO.getAll(textoBusca);
-                else
+                } else {
                     lista = imovelDAO.getAll();
-                
+                }
+
                 posRegistro = 0;
                 preencherCampos(lista, posRegistro);
                 break;
             case "<":
                 posRegistro--;
-                if (posRegistro < 0)
+                if (posRegistro < 0) {
                     posRegistro = lista.size() - 1;
+                }
                 preencherCampos(lista, posRegistro);
                 break;
             case ">":
                 posRegistro++;
-                if (posRegistro >= lista.size())
+                if (posRegistro >= lista.size()) {
                     posRegistro = 0;
+                }
                 preencherCampos(lista, posRegistro);
                 break;
         }
     }
-    
+
     private void preencherCampos(List<Imovel> lista, int pos) {
-        frame.setDadosCampos(lista.get(pos));
+        if (lista.size() > 0) {
+            frame.setDadosCampos(lista.get(pos));
+        }
     }
 }

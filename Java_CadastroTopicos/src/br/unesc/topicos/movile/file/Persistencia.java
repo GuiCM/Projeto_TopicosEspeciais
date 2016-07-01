@@ -27,6 +27,7 @@ public class Persistencia {
             FileOutputStream fileOutputStream = new FileOutputStream(userFile);
             int tamanho = 0;
 
+            System.out.println(str);
             while (tamanho < str.length()) {
                 fileOutputStream.write((int) str.charAt(tamanho++));
             }
