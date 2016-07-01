@@ -13,8 +13,8 @@ import java.util.Date;
 
 public class Persistencia {
 
-    public static String userFile = "login.dat"; //Arquivo para gravar ultimo login
-    public static String logFile = "info.log"; //Arquivo de logs
+    public static String userFile = "logs/login.dat"; //Arquivo para gravar ultimo login
+    public static String logFile = "logs/info.log"; //Arquivo de logs
 
     public String getHora() {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");

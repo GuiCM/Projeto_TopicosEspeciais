@@ -43,16 +43,7 @@ public class LoginListener implements ActionListener {
                 if (login == null) {
                     return;
                 }
-                
-                //TODO: remover mock
-                if (login != null) {
-                    JFrame principal = new MainJF();
-                    principal.setVisible(true);
-                    frame.dispose();
-                    return;
-                }
-                ////////////////////
-                
+
                 for (Login l : loginDAO.getAll()) {
                     if (login.getUsuario().equals(l.getUsuario())
                             && login.getSenha().equals(l.getSenha())) {
