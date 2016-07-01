@@ -100,7 +100,13 @@ public class LoginJF extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Confirme sua senha");
             return null;
 
+        }else if(!senha.equals(senhaConfirmar))
+        {
+          JOptionPane.showMessageDialog(this, "Senhas não conferem!");
+            return null;
         }
+        
+        
 
         return login;
     }
