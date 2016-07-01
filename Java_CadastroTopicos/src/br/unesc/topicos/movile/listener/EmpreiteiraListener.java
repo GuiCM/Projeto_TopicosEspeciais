@@ -6,23 +6,31 @@ import br.unesc.topicos.movile.file.Persistencia;
 import br.unesc.topicos.movile.view.EmpreiteiraJIF;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class EmpreiteiraListener implements ActionListener {
 
     private EmpreiteiraJIF frame;
+    private EmpreiteiraDAO empreiteiraDAO = new EmpreiteiraDAO();
+    private List<Empreiteira> lista;
+    private int posRegistro = 0;
+    
 
     public EmpreiteiraListener(EmpreiteiraJIF frame) {
         this.frame = frame;
+        
+        //Quando abre a janela puxa todas as empreiteiras
+        lista = empreiteiraDAO.getAll();
     }
 
+    public void load() {
+       preencherCampos(lista, posRegistro); 
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        Empreiteira empreiteira = null;
-        EmpreiteiraDAO empreiteiraDAO = new EmpreiteiraDAO();
+        Empreiteira empreiteira = null;       
         Persistencia persistencia = new Persistencia();
 
         switch (e.getActionCommand()) {
@@ -52,25 +60,45 @@ public class EmpreiteiraListener implements ActionListener {
                 break;
             case "Excluir":
                 //TODO: habilitar apenas quando tem registro na tela
-                empreiteira = frame.getDadosCampos();
+                empreiteira = lista.get(posRegistro);
 
-                if (empreiteira == null) {
+                if (empreiteira.getNome().length() == 0) {
                     return;
                 }
 
                 empreiteiraDAO.delete(empreiteira);
-                persistencia.salvarArquivoGeral("Cadastro de empreiteira " + empreiteira.getNome() + " removido.");
+                persistencia.salvarArquivoGeral("Cadastro de empreiteira: " + empreiteira.getNome() + " removido.");
+                lista = empreiteiraDAO.getAll();
+                posRegistro = 0;
+                preencherCampos(lista, posRegistro);   
                 break;
 
             case "Buscar":
-                System.out.println("buscar");
+                String textoBusca = frame.getDadosBusca();
+                if (textoBusca.length() > 0) {
+                    lista = empreiteiraDAO.getAll(textoBusca);
+                } else
+                    lista = empreiteiraDAO.getAll();
+                
+                posRegistro = 0;
+                preencherCampos(lista, posRegistro);
                 break;
             case "<":
-                System.out.println("ant");
+                posRegistro--;
+                if (posRegistro < 0)
+                    posRegistro = lista.size() - 1;
+                preencherCampos(lista, posRegistro);
                 break;
             case ">":
-                System.out.println("prox");
+                posRegistro++;
+                if (posRegistro >= lista.size())
+                    posRegistro = 0;
+                preencherCampos(lista, posRegistro);
                 break;
         }
+    }
+    
+    private void preencherCampos(List<Empreiteira> lista, int pos) {
+        frame.setDadosCampos(lista.get(pos));
     }
 }

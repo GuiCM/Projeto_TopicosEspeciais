@@ -164,6 +164,7 @@ public class LoginJF extends javax.swing.JFrame {
         });
 
         txtUsuario.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        txtUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioActionPerformed(evt);

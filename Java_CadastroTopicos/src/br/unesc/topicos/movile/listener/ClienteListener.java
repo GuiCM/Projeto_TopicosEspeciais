@@ -6,23 +6,29 @@ import br.unesc.topicos.movile.file.Persistencia;
 import br.unesc.topicos.movile.view.ClienteJIF;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class ClienteListener implements ActionListener {
-
     private ClienteJIF frame;
+    private List<Cliente> lista;
+    private ClienteDAO clienteDAO = new ClienteDAO();
+    private int posRegistro = 0;
 
     public ClienteListener(ClienteJIF frame) {
         this.frame = frame;
+        
+        //Quando abre a janela puxa todos os clientes
+        lista = clienteDAO.getAll();
     }
 
+    public void load() {
+       preencherCampos(lista, posRegistro); 
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
-
         Cliente cliente = null;
-        ClienteDAO clienteDAO = new ClienteDAO();
         Persistencia persistencia = new Persistencia();
 
         switch (e.getActionCommand()) {
@@ -40,7 +46,7 @@ public class ClienteListener implements ActionListener {
             case "Salvar":
                 cliente = frame.getDadosCampos();
 
-                if (cliente == null) {
+                if (cliente.getNome().length() == 0) {
                     return;
                 }
 
@@ -48,33 +54,50 @@ public class ClienteListener implements ActionListener {
                 //Salva um log de cadastro
 
                 persistencia.salvarArquivoGeral("Novo cliente cadastrado.");
-
                 frame.dispose();
                 break;
             case "Excluir":
                 //TODO: habilitar apenas quando tem registro na tela
-
-                cliente = frame.getDadosCampos();
+                cliente = lista.get(posRegistro);
               
-                if (cliente == null) {
+                if (cliente.getNome().length() == 0) {
                     return;
                 }
                 
                 clienteDAO.delete(cliente);
-
-                 persistencia.salvarArquivoGeral("Cadastro de cliente " + cliente.getNome()+  " removido.");
+                persistencia.salvarArquivoGeral("Cadastro de cliente: " + cliente.getNome() +  " removido.");
+                lista = clienteDAO.getAll();
+                posRegistro = 0;
+                preencherCampos(lista, posRegistro);                    
                 break;
 
             case "Buscar":
-                System.out.println("buscar");
+                String textoBusca = frame.getDadosBusca();
+                if (textoBusca.length() > 0) {
+                    lista = clienteDAO.getAll(textoBusca);
+                } else
+                    lista = clienteDAO.getAll();
+                
+                posRegistro = 0;
+                preencherCampos(lista, posRegistro);
                 break;
             case "<":
-                System.out.println("ant");
+                posRegistro--;
+                if (posRegistro < 0)
+                    posRegistro = lista.size() - 1;
+                preencherCampos(lista, posRegistro);
                 break;
-            case ">":
-                System.out.println("prox");
+            case ">":       
+                posRegistro++;
+                if (posRegistro >= lista.size())
+                    posRegistro = 0;
+                preencherCampos(lista, posRegistro);
                 break;
         }
+    }
+    
+    private void preencherCampos(List<Cliente> lista, int pos) {
+            frame.setDadosCampos(lista.get(pos));
     }
 
 }

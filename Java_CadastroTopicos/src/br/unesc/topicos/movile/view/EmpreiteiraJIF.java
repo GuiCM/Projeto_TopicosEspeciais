@@ -7,12 +7,13 @@ import javax.swing.JOptionPane;
 
 public class EmpreiteiraJIF extends javax.swing.JInternalFrame {
 
-    private EmpreiteiraListener listener = new EmpreiteiraListener(this);
+    private EmpreiteiraListener listener = new EmpreiteiraListener(this);;
     private Empreiteira empreiteira = new Empreiteira();
 
     public EmpreiteiraJIF() {
         initComponents();
 
+        listener.load();
         Persistencia persistencia = new Persistencia();
         persistencia.salvarArquivoGeral("Usuário acessou tela de cadastro de empreiteiras.");
     }
@@ -49,6 +50,25 @@ public class EmpreiteiraJIF extends javax.swing.JInternalFrame {
         empreiteira.setBairro(txtBairro.getText());
 
         return empreiteira;
+    }
+    
+    public void setDadosCampos(Empreiteira empreiteira) {
+        txtNome.setText(empreiteira.getNome());
+        txtProprietario.setText(empreiteira.getProprietario());
+        mskCNPJ.setText(empreiteira.getCnpj());
+        mskTelefone.setText(empreiteira.getTelefone());
+        txtFax.setText(empreiteira.getFax());
+        txtEmail.setText(empreiteira.getEmail());
+        txtRua.setText(empreiteira.getRua());
+        txtNumero.setText(String.valueOf(empreiteira.getNumero()));
+        txtCEP.setText(empreiteira.getCep());
+        txtCidade.setText(empreiteira.getCidade());
+        txtEstado.setText(empreiteira.getEstado());
+        txtBairro.setText(empreiteira.getBairro());     
+    }
+    
+    public String getDadosBusca() {
+        return txtBuscaRegistro.getText();
     }
 
     /**
@@ -265,7 +285,6 @@ public class EmpreiteiraJIF extends javax.swing.JInternalFrame {
         btnSalvar.addActionListener(listener);
 
         btnExcluir.setText("Excluir");
-        btnExcluir.setEnabled(false);
         btnExcluir.setMaximumSize(new java.awt.Dimension(70, 23));
         btnExcluir.setMinimumSize(new java.awt.Dimension(70, 23));
         btnExcluir.setPreferredSize(new java.awt.Dimension(70, 23));

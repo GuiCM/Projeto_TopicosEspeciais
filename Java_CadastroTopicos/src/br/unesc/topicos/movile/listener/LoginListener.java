@@ -7,6 +7,7 @@ import br.unesc.topicos.movile.file.Persistencia;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import br.unesc.topicos.movile.start.MainJF;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -40,7 +41,7 @@ public class LoginListener implements ActionListener {
             case "Entrar":
                 login = frame.getDadosCampos();
 
-                if (login == null) {
+                if (login.getUsuario().length() == 0) {
                     return;
                 }
 
@@ -64,16 +65,13 @@ public class LoginListener implements ActionListener {
                 JOptionPane.showMessageDialog(frame, "Seu usuário e senha estão incorretos, "
                         + "ou este usuário não existe no sistema!");
                 break;
-
             case "Registrar":
-
                 login = frame.getDadosCamposRegistrar();
 
-                if (login == null) {
+                if (login.getUsuario().length() == 0) {
                     return;
-                }
+                }              
 
-                //TODO: Fazer login senha UNIQUE para não duplicar
                 loginDAO.insert(login);
                 break;
 

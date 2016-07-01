@@ -7,15 +7,15 @@ import javax.swing.JOptionPane;
 
 public class ImovelJIF extends javax.swing.JInternalFrame {
 
-    private ImovelListener listener = new ImovelListener(this);
+    private ImovelListener listener = new ImovelListener(this);;
     private Imovel imovel = new Imovel();
 
     public ImovelJIF() {
-
         initComponents();
+         
+        listener.load();
         Persistencia persistencia = new Persistencia();
         persistencia.salvarArquivoGeral("Usuário acessou tela de cadastro de imóveis.");
-
     }
 
     public boolean isOnlyFloat(String name) {
@@ -75,6 +75,39 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
         return imovel;
     }
 
+    public void setDadosCampos(Imovel imovel) {
+        String tipoImovel = imovel.getTipoImovel();
+        if (tipoImovel.equals("Casa"))
+            cbTipoImovel.setSelectedIndex(0);
+        else
+            cbTipoImovel.setSelectedIndex(1);
+        
+        txtDimensoes.setText(String.valueOf(imovel.getDimensoes()));
+        txtValor.setText(String.valueOf(imovel.getValor()));
+        
+        String tipoMaterial = imovel.getTipoImovel();
+        if (tipoMaterial.equals("Alvenaria"))
+            cbTipoMaterial.setSelectedIndex(0);
+        else
+            cbTipoMaterial.setSelectedIndex(1);
+        
+        boolean alugado = imovel.getAlugado();
+        if (alugado)
+            cbIsAlugado.setSelectedIndex(0);
+        else
+            cbIsAlugado.setSelectedIndex(1);
+        
+        txtRua.setText(imovel.getRua());
+        txtNumero.setText(String.valueOf(imovel.getNumero()));
+        txtCEP.setText(imovel.getCep());
+        txtCidade.setText(imovel.getCidade());
+        txtEstado.setText(imovel.getEstado());
+        txtBairro.setText(imovel.getBairro());
+    }
+    
+    public String getDadosBusca() {
+        return txtBuscaRegistro.getText();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -132,7 +165,6 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
         jLabel1.setText("Cadastro de Imóveis");
 
         btnExcluir.setText("Excluir");
-        btnExcluir.setEnabled(false);
         btnExcluir.setMaximumSize(new java.awt.Dimension(70, 23));
         btnExcluir.setMinimumSize(new java.awt.Dimension(70, 23));
         btnExcluir.setPreferredSize(new java.awt.Dimension(70, 23));

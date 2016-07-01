@@ -15,8 +15,8 @@ public class ClienteJIF extends javax.swing.JInternalFrame {
     public ClienteJIF() {
         initComponents();
      
-
-        persistencia.salvarArquivoGeral("Usuário acessou tela de cadastro de cliente.");
+        listener.load();
+        persistencia.salvarArquivoGeral("Usuário acessou tela de cadastro de cliente.");   
     }
 
     public boolean isOnlyNum(String name) {
@@ -24,7 +24,6 @@ public class ClienteJIF extends javax.swing.JInternalFrame {
     }
 
     public Cliente getDadosCampos() {
-
         if (txtNome.getText().length() < 1) {
             JOptionPane.showMessageDialog(this, "Campo Nome não pode estar vazio");
             return null;
@@ -83,6 +82,29 @@ public class ClienteJIF extends javax.swing.JInternalFrame {
         return cliente;
     }
 
+    public void setDadosCampos(Cliente cliente) {
+        txtNome.setText(cliente.getNome());
+        txtIdade.setText(String.valueOf(cliente.getIdade()));
+        mskDataNascimento.setText(cliente.getDataNascimento());
+        
+        char sexo = cliente.getSexo();
+        if (sexo == 'M' || sexo == 'm')
+            cmbSexo.setSelectedIndex(0);
+        else
+            cmbSexo.setSelectedIndex(1);
+        mskCPF.setText(cliente.getCpf());
+        mskRG.setText(cliente.getRg());
+        txtRua.setText(cliente.getRua());
+        txtNumero.setText(String.valueOf(cliente.getNumero()));
+        txtCEP.setText(cliente.getCep());
+        txtCidade.setText(cliente.getCidade());
+        txtEstado.setText(cliente.getEstado());
+        txtBairro.setText(cliente.getBairro());
+    }
+    
+    public String getDadosBusca() {
+        return this.txtBuscaRegistro.getText();
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -140,7 +162,6 @@ public class ClienteJIF extends javax.swing.JInternalFrame {
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         btnExcluir.setText("Excluir");
-        btnExcluir.setEnabled(false);
         btnExcluir.setMaximumSize(new java.awt.Dimension(70, 23));
         btnExcluir.setMinimumSize(new java.awt.Dimension(70, 23));
         btnExcluir.setPreferredSize(new java.awt.Dimension(70, 23));
@@ -371,7 +392,7 @@ public class ClienteJIF extends javax.swing.JInternalFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

@@ -125,7 +125,7 @@ public class ClienteDAO {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "select codigo, descricao from Cliente";
+            String sql = "select * from Cliente";
             ps = conn.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();

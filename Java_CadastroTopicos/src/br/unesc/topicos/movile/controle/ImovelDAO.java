@@ -133,7 +133,7 @@ public class ImovelDAO {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "select codigo, descricao from Imovel";
+            String sql = "select * from Imovel";
             ps = conn.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
