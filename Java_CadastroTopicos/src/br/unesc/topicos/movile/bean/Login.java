@@ -22,7 +22,7 @@ public class Login {
         return this.senha;
     }
 
-    private void setCodigo(int codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 

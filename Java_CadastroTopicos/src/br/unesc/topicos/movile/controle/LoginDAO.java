@@ -32,14 +32,17 @@ public class LoginDAO {
                     + " values(?,?)";
 
             ps = conn.prepareStatement(sql);
-            ps.setString(1, login.getUsuario());
-            ps.setString(2, login.getSenha());
+            ps.setInt(1, login.getCodigo());
+            ps.setString(2, login.getUsuario());
+            ps.setString(3, login.getSenha());
 
             ps.execute();
 
             conn.commit();
 
         } catch (SQLException e) {
+            
+            //TODO: Passar erros de banco pro Persi gravar no log
             System.out.println("ERRO: " + e.getMessage());
 
             if (conn != null) {
@@ -120,10 +123,12 @@ public class LoginDAO {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
+                int codigo = rs.getInt("codigo");
                 String usuario = rs.getString("usuario");
                 String senha = rs.getString("senha");
 
                 Login login = new Login();
+                login.setCodigo(codigo);
                 login.setUsuario(usuario);
                 login.setSenha(senha);
 
@@ -162,10 +167,12 @@ public class LoginDAO {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
 
+                int codigo = rs.getInt("codigo");
                 String usuario = rs.getString("usuario");
                 String senha = rs.getString("senha");
 
                 Login login = new Login();
+                login.setCodigo(codigo);
                 login.setUsuario(usuario);
                 login.setSenha(senha);
 
@@ -205,8 +212,9 @@ public class LoginDAO {
 
             ps = conn.prepareStatement(sql);
 
-            ps.setString(1, login.getUsuario());
-            ps.setString(2, login.getSenha());
+            ps.setInt(1, login.getCodigo());
+            ps.setString(2, login.getUsuario());
+            ps.setString(3, login.getSenha());
 
             ps.execute();
 
