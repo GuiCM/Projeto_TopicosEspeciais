@@ -14,9 +14,9 @@ public class ClienteJIF extends javax.swing.JInternalFrame {
 
     public ClienteJIF() {
         initComponents();
-     
+
         listener.load();
-        persistencia.salvarArquivoGeral("Usuário acessou tela de cadastro de cliente.");   
+        persistencia.salvarArquivoGeral("Usuário acessou tela de cadastro de cliente.");
     }
 
     public boolean isOnlyNum(String name) {
@@ -82,12 +82,13 @@ public class ClienteJIF extends javax.swing.JInternalFrame {
         txtNome.setText(cliente.getNome());
         txtIdade.setText(String.valueOf(cliente.getIdade()));
         mskDataNascimento.setText(cliente.getDataNascimento());
-        
+
         char sexo = cliente.getSexo();
-        if (sexo == 'M' || sexo == 'm')
+        if (sexo == 'M' || sexo == 'm') {
             cmbSexo.setSelectedIndex(0);
-        else
+        } else {
             cmbSexo.setSelectedIndex(1);
+        }
         mskCPF.setText(cliente.getCpf());
         mskRG.setText(cliente.getRg());
         txtRua.setText(cliente.getRua());
@@ -97,10 +98,26 @@ public class ClienteJIF extends javax.swing.JInternalFrame {
         txtEstado.setText(cliente.getEstado());
         txtBairro.setText(cliente.getBairro());
     }
-    
+
+    public void limpaDadosCampos() {
+        txtNome.setText("");
+        txtIdade.setText("");
+        mskDataNascimento.setText("");
+        cmbSexo.setSelectedIndex(0);
+        mskCPF.setText("");
+        mskRG.setText("");
+        txtRua.setText("");
+        txtNumero.setText("");
+        txtCEP.setText("");
+        txtCidade.setText("");
+        txtEstado.setText("");
+        txtBairro.setText("");
+    }
+
     public String getDadosBusca() {
         return this.txtBuscaRegistro.getText();
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -168,7 +185,6 @@ public class ClienteJIF extends javax.swing.JInternalFrame {
         btnCancelar.addActionListener(listener);
 
         btnSalvar.setText("Atualizar");
-        btnSalvar.setActionCommand("Atualizar");
         btnSalvar.setMaximumSize(new java.awt.Dimension(80, 23));
         btnSalvar.setMinimumSize(new java.awt.Dimension(80, 23));
         btnSalvar.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -335,6 +351,11 @@ public class ClienteJIF extends javax.swing.JInternalFrame {
         btnNovo.setText("Novo");
         btnNovo.setToolTipText("");
         btnNovo.addActionListener(listener);
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -362,7 +383,7 @@ public class ClienteJIF extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -407,6 +428,16 @@ public class ClienteJIF extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        if (btnNovo.getText().equals("Novo")) {
+              limpaDadosCampos();
+            btnNovo.setText("Salvar");
+        } else {
+            btnNovo.setText("Novo");
+          
+        }
+    }//GEN-LAST:event_btnNovoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

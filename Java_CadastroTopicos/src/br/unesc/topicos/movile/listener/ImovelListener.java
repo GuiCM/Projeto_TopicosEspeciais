@@ -31,15 +31,15 @@ public class ImovelListener implements ActionListener {
         Persistencia persistencia = new Persistencia();
 
         switch (e.getActionCommand()) {
+            case "Novo":              
+                break;
+            case "Salvar":
+                imovel = frame.getDadosCampos();
+                imovelDAO.insert(imovel);
+                load();
+                break;
             case "Cancelar":
-                int result;
-                result = JOptionPane.showConfirmDialog(null, "Deseja salvar alterações?", "Mensagem do Sistema", JOptionPane.YES_NO_OPTION);
-
-                if (result == 0) {
-                    frame.dispose();
-                } else {
-                    frame.dispose();
-                }
+                frame.dispose();
                 break;
             case "Atualizar":
                 int codigo = lista.get(posRegistro).getCodigo();

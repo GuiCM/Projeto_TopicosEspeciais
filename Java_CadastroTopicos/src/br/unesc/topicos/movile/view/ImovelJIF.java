@@ -7,12 +7,13 @@ import javax.swing.JOptionPane;
 
 public class ImovelJIF extends javax.swing.JInternalFrame {
 
-    private ImovelListener listener = new ImovelListener(this);;
+    private ImovelListener listener = new ImovelListener(this);
+    ;
     private Imovel imovel = new Imovel();
 
     public ImovelJIF() {
         initComponents();
-         
+
         listener.load();
         Persistencia persistencia = new Persistencia();
         persistencia.salvarArquivoGeral("Usuário acessou tela de cadastro de imóveis.");
@@ -76,26 +77,29 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
 
     public void setDadosCampos(Imovel imovel) {
         String tipoImovel = imovel.getTipoImovel();
-        if (tipoImovel.equals("Casa"))
+        if (tipoImovel.equals("Casa")) {
             cbTipoImovel.setSelectedIndex(0);
-        else
+        } else {
             cbTipoImovel.setSelectedIndex(1);
-        
+        }
+
         txtDimensoes.setText(String.valueOf(imovel.getDimensoes()));
         txtValor.setText(String.valueOf(imovel.getValor()));
-        
-        String tipoMaterial = imovel.getTipoImovel();
-        if (tipoMaterial.equals("Alvenaria"))
+
+        String tipoMaterial = imovel.getTipoMaterial();
+        if (tipoMaterial.equals("Alvenaria")) {
             cbTipoMaterial.setSelectedIndex(0);
-        else
+        } else {
             cbTipoMaterial.setSelectedIndex(1);
-        
+        }
+
         boolean alugado = imovel.getAlugado();
-        if (alugado)
+        if (alugado) {
             cbIsAlugado.setSelectedIndex(0);
-        else
+        } else {
             cbIsAlugado.setSelectedIndex(1);
-        
+        }
+
         txtRua.setText(imovel.getRua());
         txtNumero.setText(String.valueOf(imovel.getNumero()));
         txtCEP.setText(imovel.getCep());
@@ -103,10 +107,26 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
         txtEstado.setText(imovel.getEstado());
         txtBairro.setText(imovel.getBairro());
     }
-    
+
+    public void limparDadosCampos() {
+
+        cbTipoImovel.setSelectedIndex(0);
+        txtDimensoes.setText("");
+        txtValor.setText("");
+        cbTipoMaterial.setSelectedIndex(0);
+        cbIsAlugado.setSelectedIndex(0);
+        txtRua.setText("");
+        txtNumero.setText("");
+        txtCEP.setText("");
+        txtCidade.setText("");
+        txtEstado.setText("");
+        txtBairro.setText("");
+    }
+
     public String getDadosBusca() {
         return txtBuscaRegistro.getText();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -325,6 +345,11 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
         txtBuscaRegistro.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         btnNovo.setText("Novo");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -393,6 +418,14 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        if (btnNovo.getText().equals("Novo")) {
+            btnNovo.setText("Salvar");
+        } else {
+            btnNovo.setText("Novo");
+        }
+    }//GEN-LAST:event_btnNovoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

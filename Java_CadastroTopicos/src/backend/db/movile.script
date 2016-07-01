@@ -13,8 +13,8 @@ SET WRITE_DELAY 10
 SET SCHEMA PUBLIC
 INSERT INTO EMPREITEIRA VALUES(1,'Empreiteira 1','Ines Brasil','256148524948','4832614894','156281485','sweetdreams@aremadeofthis.who','Rua teste uaaaaaaaaaaaar','148','26315487','Criciuma','SC','Bairro 2')
 INSERT INTO EMPREITEIRA VALUES(2,'Empreiteira 2','Ines Brasil uaaaar','25632145948','4832616984','152321485','itraveltheworld@aremadeofthis.who','Rua teste 2','13269','248954187','Criciuma','SC','Bairro 35')
-INSERT INTO IMOVEL VALUES(1,'Apartamento',1562.45E0,15240.0E0,'Alvenaria',FALSE,'Rua teste 001',1520,'36925812','Criciuma','SC','Bairro teste 00001')
-INSERT INTO IMOVEL VALUES(2,'Casa',162.45E0,10000.0E0,'Madeira',TRUE,'Rua teste 0025',1180,'36924952','Criciuma','SC','Bairro teste 00481')
+INSERT INTO IMOVEL VALUES(1,'Apartamento',1562.449951171875E0,15240.0E0,'Madeira',FALSE,'Rua teste 001sdfdsfs',1520,'36925812','Criciuma','ES','Bairro teste 00001')
+INSERT INTO IMOVEL VALUES(2,'Apartamento',162.4499969482422E0,10000.0E0,'Alvenaria',TRUE,'Rua teste 0025sdf49dsf4s9d',1180,'36924952','Criciuma','SC','Bairro teste 00481')
 INSERT INTO CLIENTE VALUES(1,'Ana',19,'01/07/1991','F','25615424852','1245165','Rua teste 01',458,'51426145','Criciuma','SC','Bairro teste 01')
 INSERT INTO CLIENTE VALUES(5,'Teste 2',15,'15/12/2020','M','12536215478','1452169','Rua In\u00eas brasil UAAAAAAAR',6951,'25631254','I\u00e7ara','SC','Teste')
 INSERT INTO LOGIN VALUES(1,'admin','admin')

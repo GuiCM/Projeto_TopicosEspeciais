@@ -63,6 +63,21 @@ public class EmpreiteiraJIF extends javax.swing.JInternalFrame {
         txtBairro.setText(empreiteira.getBairro());     
     }
     
+     public void limparDadosCampos() {
+        txtNome.setText("");
+        txtProprietario.setText("");
+        mskCNPJ.setText("");
+        mskTelefone.setText("");
+        txtFax.setText("");
+        txtEmail.setText("");
+        txtRua.setText("");
+        txtNumero.setText("");
+        txtCEP.setText("");
+        txtCidade.setText("");
+        txtEstado.setText("");
+        txtBairro.setText("");    
+    }
+    
     public String getDadosBusca() {
         return txtBuscaRegistro.getText();
     }
@@ -298,6 +313,11 @@ public class EmpreiteiraJIF extends javax.swing.JInternalFrame {
         txtBuscaRegistro.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         btnNovo.setText("Novo");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -369,6 +389,14 @@ public class EmpreiteiraJIF extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        if (btnNovo.getText().equals("Novo")) {
+            limparDadosCampos();
+            btnNovo.setText("Salvar");
+        } else
+            btnNovo.setText("Novo");
+    }//GEN-LAST:event_btnNovoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

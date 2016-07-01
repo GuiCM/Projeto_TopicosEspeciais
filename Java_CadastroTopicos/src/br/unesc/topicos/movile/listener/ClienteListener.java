@@ -32,16 +32,14 @@ public class ClienteListener implements ActionListener {
         Persistencia persistencia = new Persistencia();
 
         switch (e.getActionCommand()) {
+       
+            case "Salvar":
+                cliente = frame.getDadosCampos();
+                clienteDAO.insert(cliente);
+                load();
+                break;
             case "Cancelar":
-                int result;
-                result = JOptionPane.showConfirmDialog(null, "Deseja salvar alterações?", "Mensagem do Sistema", JOptionPane.YES_NO_OPTION);
-
-                if (result == 0) //TODO: salvar
-                {
-                    frame.dispose();
-                } else {
-                    frame.dispose();
-                }
+                frame.dispose();
                 break;
             case "Atualizar":
                 int codigo = lista.get(posRegistro).getCodigo();
