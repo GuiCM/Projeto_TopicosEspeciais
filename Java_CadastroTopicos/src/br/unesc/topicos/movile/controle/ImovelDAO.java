@@ -39,7 +39,7 @@ public class ImovelDAO {
                     + "cidade,"//9
                     + "estado,"//10
                     + "bairro)"//11
-                    + " values(?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + " values(?,?,?,?,?,?,?,?,?,?,?)";
 
             ps = conn.prepareStatement(sql);
             ps.setString(1, imovel.getTipoImovel());
