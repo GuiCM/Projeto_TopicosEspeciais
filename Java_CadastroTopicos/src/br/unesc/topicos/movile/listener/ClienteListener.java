@@ -11,19 +11,19 @@ import javax.swing.JOptionPane;
 
 public class ClienteListener implements ActionListener {
     private ClienteJIF frame;
-    private List<Cliente> lista;
-    private ClienteDAO clienteDAO = new ClienteDAO();
-    private int posRegistro = 0;
+    private ClienteDAO clienteDAO = new ClienteDAO();   
+    private List<Cliente> lista; //Receber a lista de clientes do banco
+    private int posRegistro; //Posicao do registro
 
     public ClienteListener(ClienteJIF frame) {
         this.frame = frame;
-        
-        //Quando abre a janela puxa todos os clientes
-        lista = clienteDAO.getAll();
     }
 
+    //Carregar todos os dados quando a janela é aberta
     public void load() {
-       preencherCampos(lista, posRegistro); 
+       posRegistro = 0;
+       lista = clienteDAO.getAll();
+       preencherCampos(lista, posRegistro);
     }
     
     @Override
@@ -43,18 +43,18 @@ public class ClienteListener implements ActionListener {
                     frame.dispose();
                 }
                 break;
-            case "Salvar":
+            case "Atualizar":
+                int codigo = lista.get(posRegistro).getCodigo();
                 cliente = frame.getDadosCampos();
-
+                cliente.setCodigo(codigo);
+                
                 if (cliente.getNome().length() == 0) {
                     return;
                 }
 
-                clienteDAO.insert(cliente);
-                //Salva um log de cadastro
-
-                persistencia.salvarArquivoGeral("Novo cliente cadastrado.");
-                frame.dispose();
+                clienteDAO.update(cliente);
+                persistencia.salvarArquivoGeral("Cliente: " + cliente.getCodigo() + ", " + cliente.getNome() + " atualizado!");
+                load();
                 break;
             case "Excluir":
                 //TODO: habilitar apenas quando tem registro na tela
@@ -66,9 +66,7 @@ public class ClienteListener implements ActionListener {
                 
                 clienteDAO.delete(cliente);
                 persistencia.salvarArquivoGeral("Cadastro de cliente: " + cliente.getNome() +  " removido.");
-                lista = clienteDAO.getAll();
-                posRegistro = 0;
-                preencherCampos(lista, posRegistro);                    
+                load();
                 break;
 
             case "Buscar":

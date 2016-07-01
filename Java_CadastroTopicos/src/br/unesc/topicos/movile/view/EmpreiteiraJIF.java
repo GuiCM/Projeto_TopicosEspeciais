@@ -23,18 +23,15 @@ public class EmpreiteiraJIF extends javax.swing.JInternalFrame {
     }
 
     public Empreiteira getDadosCampos() {
-
         if (txtNome.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Campo Nome não pode estar vazio");
             return null;
         }
 
-        if (!isOnlyNum(txtNumero.getText())) {
-
+        if (!isOnlyNum(txtNumero.getText()))
             empreiteira.setNumero(0);
-        } else {
-            empreiteira.setNumero(Integer.parseInt(txtRua.getText()));
-        }
+        else 
+            empreiteira.setNumero(Integer.parseInt(txtNumero.getText()));        
 
         empreiteira.setNome(txtNome.getText());
         empreiteira.setProprietario(txtProprietario.getText());
@@ -43,7 +40,6 @@ public class EmpreiteiraJIF extends javax.swing.JInternalFrame {
         empreiteira.setFax(txtFax.getText());
         empreiteira.setEmail(txtEmail.getText());
         empreiteira.setRua(txtRua.getText());
-
         empreiteira.setCep(txtCEP.getText());
         empreiteira.setCidade(txtCidade.getText());
         empreiteira.setEstado(txtEstado.getText());
@@ -115,6 +111,7 @@ public class EmpreiteiraJIF extends javax.swing.JInternalFrame {
         registroAnteriorBtn = new javax.swing.JButton();
         buscarRegistroBtn = new javax.swing.JButton();
         txtBuscaRegistro = new javax.swing.JTextField();
+        btnNovo = new javax.swing.JButton();
 
         setClosable(true);
         setMaximizable(true);
@@ -278,7 +275,7 @@ public class EmpreiteiraJIF extends javax.swing.JInternalFrame {
 
         btnCancelar.setText("Cancelar");
 
-        btnSalvar.setText("Salvar");
+        btnSalvar.setText("Atualizar");
         btnSalvar.setMaximumSize(new java.awt.Dimension(80, 23));
         btnSalvar.setMinimumSize(new java.awt.Dimension(80, 23));
         btnSalvar.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -299,6 +296,8 @@ public class EmpreiteiraJIF extends javax.swing.JInternalFrame {
         buscarRegistroBtn.addActionListener(listener);
 
         txtBuscaRegistro.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        btnNovo.setText("Novo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -333,6 +332,8 @@ public class EmpreiteiraJIF extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnCancelar)))
                         .addContainerGap())))
         );
@@ -358,7 +359,8 @@ public class EmpreiteiraJIF extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNovo))
                 .addContainerGap())
         );
 
@@ -372,6 +374,7 @@ public class EmpreiteiraJIF extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton buscarRegistroBtn;
     private javax.swing.JLabel jLabel1;

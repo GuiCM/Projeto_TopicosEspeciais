@@ -27,7 +27,6 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
     }
 
     public Imovel getDadosCampos() {
-
         if (txtRua.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Campo Rua não pode estar vazio");
             return null;
@@ -150,6 +149,7 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
         registroAnteriorBtn = new javax.swing.JButton();
         buscarRegistroBtn = new javax.swing.JButton();
         txtBuscaRegistro = new javax.swing.JTextField();
+        btnNovo = new javax.swing.JButton();
 
         setClosable(true);
         setMaximizable(true);
@@ -173,7 +173,7 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(listener);
 
-        btnSalvar.setText("Salvar");
+        btnSalvar.setText("Atualizar");
         btnSalvar.setMaximumSize(new java.awt.Dimension(80, 23));
         btnSalvar.setMinimumSize(new java.awt.Dimension(80, 23));
         btnSalvar.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -324,6 +324,8 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
 
         txtBuscaRegistro.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
+        btnNovo.setText("Novo");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -336,7 +338,7 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
                                 .addGap(268, 268, 268))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -354,6 +356,8 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
                                 .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnCancelar))
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -382,7 +386,8 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar))
+                    .addComponent(btnCancelar)
+                    .addComponent(btnNovo))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -393,6 +398,7 @@ public class ImovelJIF extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton buscarRegistroBtn;
     private javax.swing.JComboBox<String> cbIsAlugado;

@@ -51,11 +51,9 @@ public class ClienteJIF extends javax.swing.JInternalFrame {
         }
 
         if (txtNumero.getText().length() < 1) {
-
             cliente.setNumero(0);
-
         } else {
-            cliente.setNumero(Integer.parseInt(txtRua.getText()));
+            cliente.setNumero(Integer.parseInt(txtNumero.getText()));
         }
 
         char sexo = '\0';
@@ -67,13 +65,11 @@ public class ClienteJIF extends javax.swing.JInternalFrame {
         }
 
         cliente.setNome(txtNome.getText());
-
         cliente.setDataNascimento(mskDataNascimento.getText());
         cliente.setSexo(sexo);
         cliente.setCpf(mskCPF.getText());
         cliente.setRg(mskRG.getText());
         cliente.setRua(txtRua.getText());
-
         cliente.setCep(txtCEP.getText());
         cliente.setCidade(txtCidade.getText());
         cliente.setEstado(txtEstado.getText());
@@ -144,6 +140,7 @@ public class ClienteJIF extends javax.swing.JInternalFrame {
         proximoRegistroBtn = new javax.swing.JButton();
         txtBuscaRegistro = new javax.swing.JTextField();
         buscarRegistroBtn = new javax.swing.JButton();
+        btnNovo = new javax.swing.JButton();
 
         setClosable(true);
         setMaximizable(true);
@@ -170,7 +167,8 @@ public class ClienteJIF extends javax.swing.JInternalFrame {
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(listener);
 
-        btnSalvar.setText("Salvar");
+        btnSalvar.setText("Atualizar");
+        btnSalvar.setActionCommand("Atualizar");
         btnSalvar.setMaximumSize(new java.awt.Dimension(80, 23));
         btnSalvar.setMinimumSize(new java.awt.Dimension(80, 23));
         btnSalvar.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -334,6 +332,10 @@ public class ClienteJIF extends javax.swing.JInternalFrame {
         buscarRegistroBtn.setText("Buscar");
         buscarRegistroBtn.addActionListener(listener);
 
+        btnNovo.setText("Novo");
+        btnNovo.setToolTipText("");
+        btnNovo.addActionListener(listener);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -360,7 +362,9 @@ public class ClienteJIF extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancelar)
                 .addContainerGap())
@@ -396,7 +400,8 @@ public class ClienteJIF extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNovo))
                 .addContainerGap())
         );
 
@@ -407,6 +412,7 @@ public class ClienteJIF extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton buscarRegistroBtn;
     private javax.swing.JComboBox<String> cmbSexo;

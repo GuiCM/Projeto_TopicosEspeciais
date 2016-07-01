@@ -138,7 +138,7 @@ public class ImovelDAO {
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-
+                Integer codigo = rs.getInt("Codigo");
                 String tipoImovel = rs.getString("tipoImovel");
                 float dimensoes = rs.getFloat("dimensoes");
                 float valor = rs.getFloat("valor");
@@ -152,6 +152,7 @@ public class ImovelDAO {
                 String bairro = rs.getString("bairro");
 
                 Imovel imovel = new Imovel();
+                imovel.setCodigo(codigo);
                 imovel.setTipoImovel(tipoImovel);
                 imovel.setDimensoes(dimensoes);
                 imovel.setValor(valor);
@@ -200,7 +201,7 @@ public class ImovelDAO {
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-
+                Integer codigo = rs.getInt("Codigo");
                 String tipoImovel = rs.getString("tipoImovel");
                 float dimensoes = rs.getFloat("dimensoes");
                 float valor = rs.getFloat("valor");
@@ -214,6 +215,7 @@ public class ImovelDAO {
                 String bairro = rs.getString("bairro");
 
                 Imovel imovel = new Imovel();
+                imovel.setCodigo(codigo);
                 imovel.setTipoImovel(tipoImovel);
                 imovel.setDimensoes(dimensoes);
                 imovel.setValor(valor);
@@ -268,7 +270,7 @@ public class ImovelDAO {
                     + "cep = ?,"//8
                     + "cidade = ?,"//9
                     + "estado = ?,"//10
-                    + "bairro = ?)"//11
+                    + "bairro = ?"//11
                     + "where codigo = ?";
 
             ps = conn.prepareStatement(sql);
@@ -284,6 +286,7 @@ public class ImovelDAO {
             ps.setString(9, imovel.getCidade());
             ps.setString(10, imovel.getEstado());
             ps.setString(11, imovel.getBairro());
+            ps.setInt(12, imovel.getCodigo());
 
             ps.execute();
 

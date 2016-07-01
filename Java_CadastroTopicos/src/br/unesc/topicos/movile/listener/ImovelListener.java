@@ -10,17 +10,18 @@ import javax.swing.JOptionPane;
 
 public class ImovelListener implements ActionListener {
     private ImovelJIF frame;
-    private ImovelDAO imovelDAO = new ImovelDAO();
-    private List<Imovel> lista;
-    private int posRegistro = 0;
+    private ImovelDAO imovelDAO = new ImovelDAO();  
+    private List<Imovel> lista; //Receber a lista de imoveis do banco
+    private int posRegistro; //Posicao do registro
 
     public ImovelListener(ImovelJIF frame) {
         this.frame = frame;
-        
-        lista = imovelDAO.getAll();
     }
     
+    //Carregar todos os dados quando a janela é aberta
     public void load() {
+       posRegistro = 0;
+       lista = imovelDAO.getAll();
        preencherCampos(lista, posRegistro); 
     }
 
@@ -40,22 +41,21 @@ public class ImovelListener implements ActionListener {
                     frame.dispose();
                 }
                 break;
-            case "Salvar":
+            case "Atualizar":
+                int codigo = lista.get(posRegistro).getCodigo();
                 imovel = frame.getDadosCampos();
-                //Salva um log de cadastro
-
-                if (imovel == null) {
+                imovel.setCodigo(codigo);
+                System.out.println(posRegistro);
+                
+                if (imovel.getRua().length() == 0) 
                     return;
-                }
-
-                imovelDAO.insert(imovel);
+                
+                imovelDAO.update(imovel);
                 persistencia.salvarArquivoGeral("Novo imóvel cadastrado.");
-
-                frame.dispose();
+                load();
                 break;
 
             case "Excluir":
-                //TODO: habilitar apenas quando tem registro na tela
                 imovel = lista.get(posRegistro);
 
                 if (imovel.getRua().length() == 0) {
@@ -63,18 +63,15 @@ public class ImovelListener implements ActionListener {
                 }
                 imovelDAO.delete(imovel);
 
-                persistencia.salvarArquivoGeral("Cadastro de imóvel: Endereço "
-                        + imovel.getRua() + ", "
+                persistencia.salvarArquivoGeral("Cadastro de imóvel: Endereço " + imovel.getRua() + ", "
                         + Integer.toString(imovel.getNumero()) + " removido.");
-                lista = imovelDAO.getAll();
-                posRegistro = 0;
-                preencherCampos(lista, posRegistro);   
+                load();
                 break;
             case "Buscar":
                 String textoBusca = frame.getDadosBusca();
-                if (textoBusca.length() > 0) {
+                if (textoBusca.length() > 0) 
                     lista = imovelDAO.getAll(textoBusca);
-                } else
+                else
                     lista = imovelDAO.getAll();
                 
                 posRegistro = 0;

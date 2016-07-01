@@ -131,6 +131,7 @@ public class EmpreiteiraDAO {
             ps.setString(10, empreiteira.getCidade());
             ps.setString(11, empreiteira.getEstado());
             ps.setString(12, empreiteira.getBairro());
+            ps.setInt(13, empreiteira.getCodigo());
             
             ps.execute();
 

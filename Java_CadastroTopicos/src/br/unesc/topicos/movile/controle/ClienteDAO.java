@@ -283,6 +283,7 @@ public class ClienteDAO {
             ps.setString(10, cliente.getCidade());
             ps.setString(11, cliente.getEstado());
             ps.setString(12, cliente.getBairro());
+            ps.setInt(13, cliente.getCodigo());
 
             ps.execute();
 
