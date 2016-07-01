@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,24 +25,31 @@ public class LoginDAO {
         PreparedStatement ps = null;
         try {
 
+            List<Login> logins = getAll();
+            for (Login l : logins) {
+                if (l.getUsuario().equals(login.getUsuario())) {
+                    JOptionPane.showMessageDialog(null, "Esse registro de usuário já existe!");
+                    return;
+                }
+            }
             conn = Conexao.getConnection();
 
             String sql = "insert into Login ("
                     + "usuario,"//1
-                    + "senha,"//2        
+                    + "senha)"//2        
                     + " values(?,?)";
 
             ps = conn.prepareStatement(sql);
-            ps.setInt(1, login.getCodigo());
-            ps.setString(2, login.getUsuario());
-            ps.setString(3, login.getSenha());
+
+            ps.setString(1, login.getUsuario());
+            ps.setString(2, login.getSenha());
 
             ps.execute();
 
             conn.commit();
 
         } catch (SQLException e) {
-            
+
             //TODO: Passar erros de banco pro Persi gravar no log
             System.out.println("ERRO: " + e.getMessage());
 
@@ -117,7 +125,7 @@ public class LoginDAO {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "select codigo, descricao from Login";
+            String sql = "select codigo, usuario, senha from Login";
             ps = conn.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
@@ -160,7 +168,7 @@ public class LoginDAO {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "select codigo, descricao from Login where codigo = ?";
+            String sql = "select codigo, usuario, senha from Login where codigo = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, codbusca);
 
@@ -212,9 +220,8 @@ public class LoginDAO {
 
             ps = conn.prepareStatement(sql);
 
-            ps.setInt(1, login.getCodigo());
-            ps.setString(2, login.getUsuario());
-            ps.setString(3, login.getSenha());
+            ps.setString(1, login.getUsuario());
+            ps.setString(2, login.getSenha());
 
             ps.execute();
 
