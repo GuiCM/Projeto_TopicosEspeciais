@@ -187,17 +187,19 @@ public class ImovelDAO {
         return lista;
     }
 
-    public Imovel getImovel(Integer codbusca) {
+    
+    public List<Imovel> getAll(String nomeRegistro) {
+        List<Imovel> lista = new ArrayList<>();
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "select codigo, descricao from Imovel where codigo = ?";
+           
+            String sql = "select * from Imovel where rua like '%" + nomeRegistro+ "%'";
             ps = conn.prepareStatement(sql);
-            ps.setInt(1, codbusca);
 
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
 
                 String tipoImovel = rs.getString("tipoImovel");
                 float dimensoes = rs.getFloat("dimensoes");
@@ -224,7 +226,7 @@ public class ImovelDAO {
                 imovel.setEstado(estado);
                 imovel.setBairro(bairro);
 
-                return imovel;
+                lista.add(imovel);
             }
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
@@ -244,8 +246,10 @@ public class ImovelDAO {
                 }
             }
         }
-        return null;
+        return lista;
     }
+
+
 
     public void update(Imovel imovel) {
         Connection conn = null;

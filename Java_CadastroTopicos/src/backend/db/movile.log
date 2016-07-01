@@ -156,3 +156,7 @@ DISCONNECT
 CONNECT USER SA
 INSERT INTO CLIENTE VALUES(0,'teste',0,'','M','','','',0,'','','','')
 DISCONNECT
+/*C44*/SET SCHEMA PUBLIC
+CONNECT USER SA
+INSERT INTO EMPREITEIRA VALUES(0,'guilherme cara de p\u00e9','guilherme cara de p\u00e9','','','','','','0','','','','')
+DISCONNECT

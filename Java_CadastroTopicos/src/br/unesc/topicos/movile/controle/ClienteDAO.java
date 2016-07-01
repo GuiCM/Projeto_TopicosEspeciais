@@ -182,18 +182,18 @@ public class ClienteDAO {
         }
         return lista;
     }
-
-    public Cliente getCliente(Integer codbusca) {
+    
+    public List<Cliente> getAll(String nomeRegistro) {
+        List<Cliente> lista = new ArrayList<>();
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "select codigo, descricao from Cliente where codigo = ?";
+            String sql = "select * from Cliente where nome like '%"+nomeRegistro+"%'";
             ps = conn.prepareStatement(sql);
-            ps.setInt(1, codbusca);
 
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
 
                 Integer codigo = rs.getInt("codigo");
                 String nome = rs.getString("nome");
@@ -224,7 +224,7 @@ public class ClienteDAO {
                 cliente.setEstado(estado);
                 cliente.setBairro(bairro);
 
-                return cliente;
+                lista.add(cliente);
             }
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
@@ -244,8 +244,9 @@ public class ClienteDAO {
                 }
             }
         }
-        return null;
+        return lista;
     }
+
 
     public void update(Cliente cliente) {
         Connection conn = null;

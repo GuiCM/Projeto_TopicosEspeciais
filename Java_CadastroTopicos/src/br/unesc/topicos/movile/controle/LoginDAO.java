@@ -163,50 +163,6 @@ public class LoginDAO {
         return lista;
     }
 
-    public Login getLogin(Integer codbusca) {
-        Connection conn = null;
-        PreparedStatement ps = null;
-        try {
-            conn = Conexao.getConnection();
-            String sql = "select codigo, usuario, senha from Login where codigo = ?";
-            ps = conn.prepareStatement(sql);
-            ps.setInt(1, codbusca);
-
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-
-                int codigo = rs.getInt("codigo");
-                String usuario = rs.getString("usuario");
-                String senha = rs.getString("senha");
-
-                Login login = new Login();
-                login.setCodigo(codigo);
-                login.setUsuario(usuario);
-                login.setSenha(senha);
-
-                return login;
-            }
-        } catch (SQLException e) {
-            System.out.println("ERRO: " + e.getMessage());
-        } finally {
-            if (ps != null) {
-                try {
-                    ps.close();
-                } catch (SQLException ex) {
-                    System.out.println("ERRO: " + ex.getMessage());
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException ex) {
-                    System.out.println("ERRO: " + ex.getMessage());
-                }
-            }
-        }
-        return null;
-    }
-
     public void update(Login login) {
         Connection conn = null;
         PreparedStatement ps = null;

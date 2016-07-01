@@ -162,20 +162,20 @@ public class EmpreiteiraDAO {
             }
         }
     }
-    
-    //PESQUISAR EMPREITEIRA
-    public Empreiteira getEmpreiteira(Integer codigo) {
+
+    //LISTAR EMPREITEIRAS
+    public List<Empreiteira> getAll() {
+        List<Empreiteira> lista = new ArrayList<Empreiteira>();
         Connection conn = null;
         PreparedStatement ps = null;
-        
         try {
             conn = Conexao.getConnection();
-            String sql = "select * from Empreiteira where codigo = ?";
+            String sql = "select * from Empreiteira";
             ps = conn.prepareStatement(sql);
-            ps.setInt(1, codigo);
+
             ResultSet rs = ps.executeQuery();
-   
-            if(rs.next()) {
+            
+            while(rs.next()) {
                 Integer cod = rs.getInt("codigo");
                 String nome = rs.getString("nome");
                 String proprietario = rs.getString("proprietario");
@@ -205,7 +205,7 @@ public class EmpreiteiraDAO {
                 e.setEstado(estado);
                 e.setBairro(bairro);
                 
-                return e;
+                lista.add(e);
             }
         } catch(SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
@@ -225,17 +225,18 @@ public class EmpreiteiraDAO {
                 }
             }
         }
-        return null;
+        return lista;
     }
     
+    
     //LISTAR EMPREITEIRAS
-    public List<Empreiteira> getAll() {
+    public List<Empreiteira> getAll(String nomeRegistro) {
         List<Empreiteira> lista = new ArrayList<Empreiteira>();
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "select * from Empreiteira";
+            String sql = "select * from Empreiteira where nome like '%" + nomeRegistro+ "%'";
             ps = conn.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
